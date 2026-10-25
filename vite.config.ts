@@ -46,7 +46,7 @@ function solidMdx(): Plugin {
 }
 
 export default defineConfig({
-  plugins: [solidMdx(), solidStart(), nitro()],
+  plugins: [solidMdx(), solidStart({ middleware: "src/middleware.ts" }), nitro()],
   nitro: {
     preset: "static",
     prerender: {

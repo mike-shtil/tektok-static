@@ -6,6 +6,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
+    "redirects": "node scripts/extract-legacy-redirects.mjs",
     "prepare": "panda"
   },
   "devEngines": {

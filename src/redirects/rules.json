@@ -1,0 +1,415 @@
+[
+  {
+    "id": 1,
+    "kind": "regex",
+    "pattern": "^/board/.*$",
+    "to": "/",
+    "status": 301
+  },
+  {
+    "id": 18,
+    "kind": "exact",
+    "from": "/הנה-אני-בא",
+    "to": "/school-girl-zombie-hunter/",
+    "status": 301
+  },
+  {
+    "id": 2,
+    "kind": "regex",
+    "pattern": "^/threads/(.*)\\.\\d+/?$",
+    "to": "/$1",
+    "status": 301
+  },
+  {
+    "id": 20,
+    "kind": "exact",
+    "from": "/האם-צריך-git-gud-בשביל-להצליח-בדארק-סולס-חלק",
+    "to": "/git-gud-part-one/",
+    "status": 301
+  },
+  {
+    "id": 21,
+    "kind": "exact",
+    "from": "/המקרה-המוזר-עם-האנדרואיד-בלילה",
+    "to": "/weird-android-case/",
+    "status": 301
+  },
+  {
+    "id": 22,
+    "kind": "exact",
+    "from": "/הכנתי-המבורגר-מדהים-ואף-אחד-לא-מאמין-לי",
+    "to": "/burger-no-on-believe/",
+    "status": 301
+  },
+  {
+    "id": 6,
+    "kind": "exact",
+    "from": "/deferred.php",
+    "to": "/",
+    "status": 301
+  },
+  {
+    "id": 23,
+    "kind": "exact",
+    "from": "/אני-וה-steam-link-שלי-או-לשחק-בסלון-מהמחשב",
+    "to": "/steam-link-couch-play-review/",
+    "status": 301
+  },
+  {
+    "id": 7,
+    "kind": "regex",
+    "pattern": "^/members/.*$",
+    "to": "/",
+    "status": 301
+  },
+  {
+    "id": 25,
+    "kind": "exact",
+    "from": "/סיקור-zheros-העדכון-שהרס-את-הכל",
+    "to": "/zheros-ps4-review/",
+    "status": 301
+  },
+  {
+    "id": 8,
+    "kind": "regex",
+    "pattern": "^/tags/(.*)$",
+    "to": "/tag/$1",
+    "status": 301
+  },
+  {
+    "id": 26,
+    "kind": "exact",
+    "from": "/סקירה-בדקה-dunkirk",
+    "to": "/dunkirk-minute-review/",
+    "status": 301
+  },
+  {
+    "id": 9,
+    "kind": "exact",
+    "from": "/tag/רכב",
+    "to": "/tags/auto/",
+    "status": 301
+  },
+  {
+    "id": 27,
+    "kind": "exact",
+    "from": "/למה-עברתי-ל-ios-ולמה-אני-לא-הולך-לחזור",
+    "to": "/ios-vs-android/",
+    "status": 301
+  },
+  {
+    "id": 10,
+    "kind": "exact",
+    "from": "/tag/תעופה",
+    "to": "/tag/aviation/",
+    "status": 301
+  },
+  {
+    "id": 29,
+    "kind": "exact",
+    "from": "/יכול-להיות-של-ps4-pro-יש-יותר-כוח-ממה-שנדמה-לנ",
+    "to": "/ps4-pro-vega-new-rpm/",
+    "status": 301
+  },
+  {
+    "id": 11,
+    "kind": "exact",
+    "from": "/tag/אחסון",
+    "to": "/tag/hosting/",
+    "status": 301
+  },
+  {
+    "id": 30,
+    "kind": "exact",
+    "from": "/student-uses-only-ipad-for-university",
+    "to": "/student-only-uses-ipad-for-university/",
+    "status": 301
+  },
+  {
+    "id": 12,
+    "kind": "exact",
+    "from": "/tag/מנוע חשמלי",
+    "to": "/tag/electric-drive/",
+    "status": 301
+  },
+  {
+    "id": 34,
+    "kind": "exact",
+    "from": "/ps4-או-ps4-pro-מה-לבחור",
+    "to": "/ps4-vs-ps4-pro-full-comparison/",
+    "status": 301
+  },
+  {
+    "id": 13,
+    "kind": "exact",
+    "from": "/tag/נמלולים",
+    "to": "/tag/lemmings/",
+    "status": 301
+  },
+  {
+    "id": 35,
+    "kind": "exact",
+    "from": "/gameinno2",
+    "to": "/game-in-fest-2017/",
+    "status": 301
+  },
+  {
+    "id": 14,
+    "kind": "exact",
+    "from": "/tag/אופניים חשמליים",
+    "to": "/tag/electric-bicycle/",
+    "status": 301
+  },
+  {
+    "id": 36,
+    "kind": "exact",
+    "from": "/galaxy-note-8-is-here",
+    "to": "/galaxy-note-8-in-israel/",
+    "status": 301
+  },
+  {
+    "id": 15,
+    "kind": "exact",
+    "from": "/pages/about",
+    "to": "/about-us/",
+    "status": 301
+  },
+  {
+    "id": 37,
+    "kind": "exact",
+    "from": "/fifa-18-מחשב-מול-ps4-מול-ps4-pro-ראש-בראש",
+    "to": "/fifa18-pc-vsps4-vs-ps4pro/",
+    "status": 301
+  },
+  {
+    "id": 16,
+    "kind": "exact",
+    "from": "/תקנון",
+    "to": "/terms/",
+    "status": 301
+  },
+  {
+    "id": 38,
+    "kind": "exact",
+    "from": "/fifa18-pc-vsps4-vs-ps4pro",
+    "to": "/fifa18-pc-vs-ps4-vs-ps4pro/",
+    "status": 301
+  },
+  {
+    "id": 17,
+    "kind": "query",
+    "key": "prefix_id",
+    "to": "/",
+    "status": 301
+  },
+  {
+    "id": 39,
+    "kind": "exact",
+    "from": "/4950-2",
+    "to": "/game-in-part-one-xbox-youtube-indie/",
+    "status": 301
+  },
+  {
+    "id": 19,
+    "kind": "exact",
+    "from": "/sitemap/sitemap.xml.gz",
+    "to": "/sitemap.xml.gz",
+    "status": 301
+  },
+  {
+    "id": 40,
+    "kind": "exact",
+    "from": "/game-in-part-one-xbox-youtube-indie",
+    "to": "/game-in-mako-part-one-xbox-youtube-indie/",
+    "status": 301
+  },
+  {
+    "id": 41,
+    "kind": "exact",
+    "from": "/ערכו-האמיתי-של-ה-bitcoin-אינו-במחירו",
+    "to": "/what-is-blockchain/",
+    "status": 301
+  },
+  {
+    "id": 28,
+    "kind": "exact",
+    "from": "/tektok/.*",
+    "to": "/",
+    "status": 301
+  },
+  {
+    "id": 42,
+    "kind": "exact",
+    "from": "/the-evil-within-2-minute-review",
+    "to": "/the-evil-within-2-review/",
+    "status": 301
+  },
+  {
+    "id": 43,
+    "kind": "exact",
+    "from": "/game-league-באתי-ראיתי-לא-שיחקתי",
+    "to": "/game-in-league-dec/",
+    "status": 301
+  },
+  {
+    "id": 44,
+    "kind": "exact",
+    "from": "/game-in-league-dec",
+    "to": "/game-in-league-dec-18/",
+    "status": 301
+  },
+  {
+    "id": 45,
+    "kind": "exact",
+    "from": "/איירסופט-קול-אוף-דיוטי-בחיים-האמיתיים",
+    "to": "/call-of-duty-airsoft/",
+    "status": 301
+  },
+  {
+    "id": 46,
+    "kind": "exact",
+    "from": "/אייפד-פרו-מנקודת-מבט-של-מאייר-מתחיל",
+    "to": "/ipad-pro-for-starting-designers/",
+    "status": 301
+  },
+  {
+    "id": 47,
+    "kind": "exact",
+    "from": "/photuro-להיכנס-בתלת-מימד-לתוך-gta",
+    "to": "/photuro-gta-enter-3d-image/",
+    "status": 301
+  },
+  {
+    "id": 48,
+    "kind": "exact",
+    "from": "/huawei-p20-סקירה",
+    "to": "/huawei-p20-review/",
+    "status": 301
+  },
+  {
+    "id": 49,
+    "kind": "exact",
+    "from": "/huawei-משיקה-את-ה-huawei-mate-20-pro-ומזמינה-את-מנהלי-הקבוצ",
+    "to": "/huawei-mate-20-pro-israel-launch/",
+    "status": 301
+  },
+  {
+    "id": 51,
+    "kind": "exact",
+    "from": "/ubisoft-opinion-greedy-or-hit-machine",
+    "to": "/ubisoft-opinion-article/",
+    "status": 301
+  },
+  {
+    "id": 53,
+    "kind": "exact",
+    "from": "/שומרים-סיסמאות-בלי-לאבד-את-הראש",
+    "to": "/how-to-store-passwords/",
+    "status": 301
+  },
+  {
+    "id": 55,
+    "kind": "exact",
+    "from": "/indie-playground",
+    "to": "/indie-playground-review/",
+    "status": 301
+  },
+  {
+    "id": 56,
+    "kind": "exact",
+    "from": "/indie-playground-review",
+    "to": "/indie-playground-2018-hands-on/",
+    "status": 301
+  },
+  {
+    "id": 57,
+    "kind": "exact",
+    "from": "/ces-preview-israeli-team",
+    "to": "/ces-2019-preview-israeli-team/",
+    "status": 301
+  },
+  {
+    "id": 59,
+    "kind": "exact",
+    "from": "/סאונד-בר-לא-תודה-איך-להשיג-קולנוע-ביתי",
+    "to": "/better-home-theater-than-sound-bar/",
+    "status": 301
+  },
+  {
+    "id": 60,
+    "kind": "exact",
+    "from": "/איך-לקנות-מגבר-רסיבר-ורמקולים-מדריך",
+    "to": "/how-to-choose-a-receiver-and-speakers/",
+    "status": 301
+  },
+  {
+    "id": 61,
+    "kind": "exact",
+    "from": "/סוגיית-ה-sekiro-או-למה-אנחנו-מפחדים-מקושי",
+    "to": "/does-sekiro-need-an-easy-mode/",
+    "status": 301
+  },
+  {
+    "id": 62,
+    "kind": "exact",
+    "from": "/15-galaxy-fold-and-folding-phone-screens",
+    "to": "/podcast-15-galaxy-fold-and-folding-phone-screens/",
+    "status": 301
+  },
+  {
+    "id": 63,
+    "kind": "exact",
+    "from": "/כנס-wwdc-מצגת-הפתיחה-סיכום",
+    "to": "/wwdc-opening-keynote-summary/",
+    "status": 301
+  },
+  {
+    "id": 64,
+    "kind": "exact",
+    "from": "/changing-from-playstation-4-to-pc-gaming",
+    "to": "/switching-from-playstation-4-to-pc/",
+    "status": 301
+  },
+  {
+    "id": 65,
+    "kind": "exact",
+    "from": "/מה-היא-טכנולוגיית-פרסום-הגדרה-תכונות-ו",
+    "to": "/what-is-digital-advertising/",
+    "status": 301
+  },
+  {
+    "id": 66,
+    "kind": "exact",
+    "from": "/הצדק-הוא-עיוור-למה-לא-נראה-את-סדרת-judgment-על-ה",
+    "to": "/blind-justice-judgment-not-coming-to-pc/",
+    "status": 301
+  },
+  {
+    "id": 67,
+    "kind": "exact",
+    "from": "/אמא-מה-אהיה-כשאגדל",
+    "to": "/what-will-i-be-when-i-grow-up/",
+    "status": 301
+  },
+  {
+    "id": 68,
+    "kind": "exact",
+    "from": "/סקירה-בדקה-deaths-door",
+    "to": "/deaths-door-one-minute-review/",
+    "status": 301
+  },
+  {
+    "id": 69,
+    "kind": "exact",
+    "from": "/סקירה-בדקה-prickle-והחשיבות-בדמואים",
+    "to": "/prickle-demo-demo-exprience/",
+    "status": 301
+  },
+  {
+    "id": 70,
+    "kind": "exact",
+    "from": "/prickle-demo-demo-exprience",
+    "to": "/prickle-demo-exprience/",
+    "status": 301
+  }
+]

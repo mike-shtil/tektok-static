@@ -1,0 +1,1043 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "routes": [
+    {
+      "src": "^/board/.*$",
+      "status": 301,
+      "headers": {
+        "Location": "/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/הנה-אני-בא/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/school-girl-zombie-hunter/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%94%d7%a0%d7%94-%d7%90%d7%a0%d7%99-%d7%91%d7%90/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/school-girl-zombie-hunter/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%94%D7%A0%D7%94-%D7%90%D7%A0%D7%99-%D7%91%D7%90/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/school-girl-zombie-hunter/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/threads/(.*)\\.\\d+/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/$1",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/האם-צריך-git-gud-בשביל-להצליח-בדארק-סולס-חלק/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/git-gud-part-one/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%94%d7%90%d7%9d-%d7%a6%d7%a8%d7%99%d7%9a-git-gud-%d7%91%d7%a9%d7%91%d7%99%d7%9c-%d7%9c%d7%94%d7%a6%d7%9c%d7%99%d7%97-%d7%91%d7%93%d7%90%d7%a8%d7%a7-%d7%a1%d7%95%d7%9c%d7%a1-%d7%97%d7%9c%d7%a7/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/git-gud-part-one/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%94%D7%90%D7%9D-%D7%A6%D7%A8%D7%99%D7%9A-git-gud-%D7%91%D7%A9%D7%91%D7%99%D7%9C-%D7%9C%D7%94%D7%A6%D7%9C%D7%99%D7%97-%D7%91%D7%93%D7%90%D7%A8%D7%A7-%D7%A1%D7%95%D7%9C%D7%A1-%D7%97%D7%9C%D7%A7/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/git-gud-part-one/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/המקרה-המוזר-עם-האנדרואיד-בלילה/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/weird-android-case/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%94%d7%9e%d7%a7%d7%a8%d7%94-%d7%94%d7%9e%d7%95%d7%96%d7%a8-%d7%a2%d7%9d-%d7%94%d7%90%d7%a0%d7%93%d7%a8%d7%95%d7%90%d7%99%d7%93-%d7%91%d7%9c%d7%99%d7%9c%d7%94/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/weird-android-case/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%94%D7%9E%D7%A7%D7%A8%D7%94-%D7%94%D7%9E%D7%95%D7%96%D7%A8-%D7%A2%D7%9D-%D7%94%D7%90%D7%A0%D7%93%D7%A8%D7%95%D7%90%D7%99%D7%93-%D7%91%D7%9C%D7%99%D7%9C%D7%94/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/weird-android-case/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/הכנתי-המבורגר-מדהים-ואף-אחד-לא-מאמין-לי/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/burger-no-on-believe/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%94%d7%9b%d7%a0%d7%aa%d7%99-%d7%94%d7%9e%d7%91%d7%95%d7%a8%d7%92%d7%a8-%d7%9e%d7%93%d7%94%d7%99%d7%9d-%d7%95%d7%90%d7%a3-%d7%90%d7%97%d7%93-%d7%9c%d7%90-%d7%9e%d7%90%d7%9e%d7%99%d7%9f-%d7%9c%d7%99/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/burger-no-on-believe/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%94%D7%9B%D7%A0%D7%AA%D7%99-%D7%94%D7%9E%D7%91%D7%95%D7%A8%D7%92%D7%A8-%D7%9E%D7%93%D7%94%D7%99%D7%9D-%D7%95%D7%90%D7%A3-%D7%90%D7%97%D7%93-%D7%9C%D7%90-%D7%9E%D7%90%D7%9E%D7%99%D7%9F-%D7%9C%D7%99/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/burger-no-on-believe/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/deferred\\.php/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/אני-וה-steam-link-שלי-או-לשחק-בסלון-מהמחשב/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/steam-link-couch-play-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%90%d7%a0%d7%99-%d7%95%d7%94-steam-link-%d7%a9%d7%9c%d7%99-%d7%90%d7%95-%d7%9c%d7%a9%d7%97%d7%a7-%d7%91%d7%a1%d7%9c%d7%95%d7%9f-%d7%9e%d7%94%d7%9e%d7%97%d7%a9%d7%91/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/steam-link-couch-play-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%90%D7%A0%D7%99-%D7%95%D7%94-steam-link-%D7%A9%D7%9C%D7%99-%D7%90%D7%95-%D7%9C%D7%A9%D7%97%D7%A7-%D7%91%D7%A1%D7%9C%D7%95%D7%9F-%D7%9E%D7%94%D7%9E%D7%97%D7%A9%D7%91/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/steam-link-couch-play-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/members/.*$",
+      "status": 301,
+      "headers": {
+        "Location": "/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/סיקור-zheros-העדכון-שהרס-את-הכל/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/zheros-ps4-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%a1%d7%99%d7%a7%d7%95%d7%a8-zheros-%d7%94%d7%a2%d7%93%d7%9b%d7%95%d7%9f-%d7%a9%d7%94%d7%a8%d7%a1-%d7%90%d7%aa-%d7%94%d7%9b%d7%9c/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/zheros-ps4-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%A1%D7%99%D7%A7%D7%95%D7%A8-zheros-%D7%94%D7%A2%D7%93%D7%9B%D7%95%D7%9F-%D7%A9%D7%94%D7%A8%D7%A1-%D7%90%D7%AA-%D7%94%D7%9B%D7%9C/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/zheros-ps4-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tags/(.*)$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/$1",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/סקירה-בדקה-dunkirk/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/dunkirk-minute-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%a1%d7%a7%d7%99%d7%a8%d7%94-%d7%91%d7%93%d7%a7%d7%94-dunkirk/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/dunkirk-minute-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%A1%D7%A7%D7%99%D7%A8%D7%94-%D7%91%D7%93%D7%A7%D7%94-dunkirk/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/dunkirk-minute-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/רכב/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tags/auto/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/%d7%a8%d7%9b%d7%91/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tags/auto/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/%D7%A8%D7%9B%D7%91/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tags/auto/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/למה-עברתי-ל-ios-ולמה-אני-לא-הולך-לחזור/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/ios-vs-android/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%9c%d7%9e%d7%94-%d7%a2%d7%91%d7%a8%d7%aa%d7%99-%d7%9c-ios-%d7%95%d7%9c%d7%9e%d7%94-%d7%90%d7%a0%d7%99-%d7%9c%d7%90-%d7%94%d7%95%d7%9c%d7%9a-%d7%9c%d7%97%d7%96%d7%95%d7%a8/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/ios-vs-android/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%9C%D7%9E%D7%94-%D7%A2%D7%91%D7%A8%D7%AA%D7%99-%D7%9C-ios-%D7%95%D7%9C%D7%9E%D7%94-%D7%90%D7%A0%D7%99-%D7%9C%D7%90-%D7%94%D7%95%D7%9C%D7%9A-%D7%9C%D7%97%D7%96%D7%95%D7%A8/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/ios-vs-android/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/תעופה/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/aviation/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/%d7%aa%d7%a2%d7%95%d7%a4%d7%94/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/aviation/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/%D7%AA%D7%A2%D7%95%D7%A4%D7%94/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/aviation/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/יכול-להיות-של-ps4-pro-יש-יותר-כוח-ממה-שנדמה-לנ/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/ps4-pro-vega-new-rpm/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%99%d7%9b%d7%95%d7%9c-%d7%9c%d7%94%d7%99%d7%95%d7%aa-%d7%a9%d7%9c-ps4-pro-%d7%99%d7%a9-%d7%99%d7%95%d7%aa%d7%a8-%d7%9b%d7%95%d7%97-%d7%9e%d7%9e%d7%94-%d7%a9%d7%a0%d7%93%d7%9e%d7%94-%d7%9c%d7%a0/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/ps4-pro-vega-new-rpm/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%99%D7%9B%D7%95%D7%9C-%D7%9C%D7%94%D7%99%D7%95%D7%AA-%D7%A9%D7%9C-ps4-pro-%D7%99%D7%A9-%D7%99%D7%95%D7%AA%D7%A8-%D7%9B%D7%95%D7%97-%D7%9E%D7%9E%D7%94-%D7%A9%D7%A0%D7%93%D7%9E%D7%94-%D7%9C%D7%A0/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/ps4-pro-vega-new-rpm/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/אחסון/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/hosting/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/%d7%90%d7%97%d7%a1%d7%95%d7%9f/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/hosting/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/%D7%90%D7%97%D7%A1%D7%95%D7%9F/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/hosting/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/student-uses-only-ipad-for-university/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/student-only-uses-ipad-for-university/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/מנוע חשמלי/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/electric-drive/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/%d7%9e%d7%a0%d7%95%d7%a2%20%d7%97%d7%a9%d7%9e%d7%9c%d7%99/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/electric-drive/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/%D7%9E%D7%A0%D7%95%D7%A2%20%D7%97%D7%A9%D7%9E%D7%9C%D7%99/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/electric-drive/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/ps4-או-ps4-pro-מה-לבחור/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/ps4-vs-ps4-pro-full-comparison/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/ps4-%d7%90%d7%95-ps4-pro-%d7%9e%d7%94-%d7%9c%d7%91%d7%97%d7%95%d7%a8/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/ps4-vs-ps4-pro-full-comparison/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/ps4-%D7%90%D7%95-ps4-pro-%D7%9E%D7%94-%D7%9C%D7%91%D7%97%D7%95%D7%A8/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/ps4-vs-ps4-pro-full-comparison/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/נמלולים/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/lemmings/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/%d7%a0%d7%9e%d7%9c%d7%95%d7%9c%d7%99%d7%9d/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/lemmings/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/%D7%A0%D7%9E%D7%9C%D7%95%D7%9C%D7%99%D7%9D/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/lemmings/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/gameinno2/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/game-in-fest-2017/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/אופניים חשמליים/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/electric-bicycle/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/%d7%90%d7%95%d7%a4%d7%a0%d7%99%d7%99%d7%9d%20%d7%97%d7%a9%d7%9e%d7%9c%d7%99%d7%99%d7%9d/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/electric-bicycle/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tag/%D7%90%D7%95%D7%A4%D7%A0%D7%99%D7%99%D7%9D%20%D7%97%D7%A9%D7%9E%D7%9C%D7%99%D7%99%D7%9D/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/tag/electric-bicycle/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/galaxy-note-8-is-here/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/galaxy-note-8-in-israel/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/pages/about/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/about-us/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/fifa-18-מחשב-מול-ps4-מול-ps4-pro-ראש-בראש/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/fifa18-pc-vsps4-vs-ps4pro/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/fifa-18-%d7%9e%d7%97%d7%a9%d7%91-%d7%9e%d7%95%d7%9c-ps4-%d7%9e%d7%95%d7%9c-ps4-pro-%d7%a8%d7%90%d7%a9-%d7%91%d7%a8%d7%90%d7%a9/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/fifa18-pc-vsps4-vs-ps4pro/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/fifa-18-%D7%9E%D7%97%D7%A9%D7%91-%D7%9E%D7%95%D7%9C-ps4-%D7%9E%D7%95%D7%9C-ps4-pro-%D7%A8%D7%90%D7%A9-%D7%91%D7%A8%D7%90%D7%A9/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/fifa18-pc-vsps4-vs-ps4pro/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/תקנון/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/terms/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%aa%d7%a7%d7%a0%d7%95%d7%9f/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/terms/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%AA%D7%A7%D7%A0%D7%95%D7%9F/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/terms/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/fifa18-pc-vsps4-vs-ps4pro/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/fifa18-pc-vs-ps4-vs-ps4pro/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^(?:/.*)?$",
+      "has": [
+        {
+          "type": "query",
+          "key": "prefix_id"
+        }
+      ],
+      "status": 301,
+      "headers": {
+        "Location": "/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/4950-2/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/game-in-part-one-xbox-youtube-indie/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/sitemap/sitemap\\.xml\\.gz/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/sitemap.xml.gz",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/game-in-part-one-xbox-youtube-indie/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/game-in-mako-part-one-xbox-youtube-indie/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/ערכו-האמיתי-של-ה-bitcoin-אינו-במחירו/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/what-is-blockchain/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%a2%d7%a8%d7%9b%d7%95-%d7%94%d7%90%d7%9e%d7%99%d7%aa%d7%99-%d7%a9%d7%9c-%d7%94-bitcoin-%d7%90%d7%99%d7%a0%d7%95-%d7%91%d7%9e%d7%97%d7%99%d7%a8%d7%95/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/what-is-blockchain/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%A2%D7%A8%D7%9B%D7%95-%D7%94%D7%90%D7%9E%D7%99%D7%AA%D7%99-%D7%A9%D7%9C-%D7%94-bitcoin-%D7%90%D7%99%D7%A0%D7%95-%D7%91%D7%9E%D7%97%D7%99%D7%A8%D7%95/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/what-is-blockchain/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/tektok/\\.\\*/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/the-evil-within-2-minute-review/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/the-evil-within-2-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/game-league-באתי-ראיתי-לא-שיחקתי/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/game-in-league-dec/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/game-league-%d7%91%d7%90%d7%aa%d7%99-%d7%a8%d7%90%d7%99%d7%aa%d7%99-%d7%9c%d7%90-%d7%a9%d7%99%d7%97%d7%a7%d7%aa%d7%99/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/game-in-league-dec/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/game-league-%D7%91%D7%90%D7%AA%D7%99-%D7%A8%D7%90%D7%99%D7%AA%D7%99-%D7%9C%D7%90-%D7%A9%D7%99%D7%97%D7%A7%D7%AA%D7%99/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/game-in-league-dec/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/game-in-league-dec/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/game-in-league-dec-18/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/איירסופט-קול-אוף-דיוטי-בחיים-האמיתיים/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/call-of-duty-airsoft/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%90%d7%99%d7%99%d7%a8%d7%a1%d7%95%d7%a4%d7%98-%d7%a7%d7%95%d7%9c-%d7%90%d7%95%d7%a3-%d7%93%d7%99%d7%95%d7%98%d7%99-%d7%91%d7%97%d7%99%d7%99%d7%9d-%d7%94%d7%90%d7%9e%d7%99%d7%aa%d7%99%d7%99%d7%9d/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/call-of-duty-airsoft/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%90%D7%99%D7%99%D7%A8%D7%A1%D7%95%D7%A4%D7%98-%D7%A7%D7%95%D7%9C-%D7%90%D7%95%D7%A3-%D7%93%D7%99%D7%95%D7%98%D7%99-%D7%91%D7%97%D7%99%D7%99%D7%9D-%D7%94%D7%90%D7%9E%D7%99%D7%AA%D7%99%D7%99%D7%9D/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/call-of-duty-airsoft/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/אייפד-פרו-מנקודת-מבט-של-מאייר-מתחיל/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/ipad-pro-for-starting-designers/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%90%d7%99%d7%99%d7%a4%d7%93-%d7%a4%d7%a8%d7%95-%d7%9e%d7%a0%d7%a7%d7%95%d7%93%d7%aa-%d7%9e%d7%91%d7%98-%d7%a9%d7%9c-%d7%9e%d7%90%d7%99%d7%99%d7%a8-%d7%9e%d7%aa%d7%97%d7%99%d7%9c/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/ipad-pro-for-starting-designers/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%90%D7%99%D7%99%D7%A4%D7%93-%D7%A4%D7%A8%D7%95-%D7%9E%D7%A0%D7%A7%D7%95%D7%93%D7%AA-%D7%9E%D7%91%D7%98-%D7%A9%D7%9C-%D7%9E%D7%90%D7%99%D7%99%D7%A8-%D7%9E%D7%AA%D7%97%D7%99%D7%9C/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/ipad-pro-for-starting-designers/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/photuro-להיכנס-בתלת-מימד-לתוך-gta/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/photuro-gta-enter-3d-image/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/photuro-%d7%9c%d7%94%d7%99%d7%9b%d7%a0%d7%a1-%d7%91%d7%aa%d7%9c%d7%aa-%d7%9e%d7%99%d7%9e%d7%93-%d7%9c%d7%aa%d7%95%d7%9a-gta/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/photuro-gta-enter-3d-image/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/photuro-%D7%9C%D7%94%D7%99%D7%9B%D7%A0%D7%A1-%D7%91%D7%AA%D7%9C%D7%AA-%D7%9E%D7%99%D7%9E%D7%93-%D7%9C%D7%AA%D7%95%D7%9A-gta/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/photuro-gta-enter-3d-image/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/huawei-p20-סקירה/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/huawei-p20-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/huawei-p20-%d7%a1%d7%a7%d7%99%d7%a8%d7%94/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/huawei-p20-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/huawei-p20-%D7%A1%D7%A7%D7%99%D7%A8%D7%94/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/huawei-p20-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/huawei-משיקה-את-ה-huawei-mate-20-pro-ומזמינה-את-מנהלי-הקבוצ/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/huawei-mate-20-pro-israel-launch/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/huawei-%d7%9e%d7%a9%d7%99%d7%a7%d7%94-%d7%90%d7%aa-%d7%94-huawei-mate-20-pro-%d7%95%d7%9e%d7%96%d7%9e%d7%99%d7%a0%d7%94-%d7%90%d7%aa-%d7%9e%d7%a0%d7%94%d7%9c%d7%99-%d7%94%d7%a7%d7%91%d7%95%d7%a6/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/huawei-mate-20-pro-israel-launch/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/huawei-%D7%9E%D7%A9%D7%99%D7%A7%D7%94-%D7%90%D7%AA-%D7%94-huawei-mate-20-pro-%D7%95%D7%9E%D7%96%D7%9E%D7%99%D7%A0%D7%94-%D7%90%D7%AA-%D7%9E%D7%A0%D7%94%D7%9C%D7%99-%D7%94%D7%A7%D7%91%D7%95%D7%A6/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/huawei-mate-20-pro-israel-launch/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/ubisoft-opinion-greedy-or-hit-machine/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/ubisoft-opinion-article/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/שומרים-סיסמאות-בלי-לאבד-את-הראש/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/how-to-store-passwords/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%a9%d7%95%d7%9e%d7%a8%d7%99%d7%9d-%d7%a1%d7%99%d7%a1%d7%9e%d7%90%d7%95%d7%aa-%d7%91%d7%9c%d7%99-%d7%9c%d7%90%d7%91%d7%93-%d7%90%d7%aa-%d7%94%d7%a8%d7%90%d7%a9/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/how-to-store-passwords/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%A9%D7%95%D7%9E%D7%A8%D7%99%D7%9D-%D7%A1%D7%99%D7%A1%D7%9E%D7%90%D7%95%D7%AA-%D7%91%D7%9C%D7%99-%D7%9C%D7%90%D7%91%D7%93-%D7%90%D7%AA-%D7%94%D7%A8%D7%90%D7%A9/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/how-to-store-passwords/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/indie-playground/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/indie-playground-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/indie-playground-review/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/indie-playground-2018-hands-on/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/ces-preview-israeli-team/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/ces-2019-preview-israeli-team/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/סאונד-בר-לא-תודה-איך-להשיג-קולנוע-ביתי/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/better-home-theater-than-sound-bar/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%a1%d7%90%d7%95%d7%a0%d7%93-%d7%91%d7%a8-%d7%9c%d7%90-%d7%aa%d7%95%d7%93%d7%94-%d7%90%d7%99%d7%9a-%d7%9c%d7%94%d7%a9%d7%99%d7%92-%d7%a7%d7%95%d7%9c%d7%a0%d7%95%d7%a2-%d7%91%d7%99%d7%aa%d7%99/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/better-home-theater-than-sound-bar/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%A1%D7%90%D7%95%D7%A0%D7%93-%D7%91%D7%A8-%D7%9C%D7%90-%D7%AA%D7%95%D7%93%D7%94-%D7%90%D7%99%D7%9A-%D7%9C%D7%94%D7%A9%D7%99%D7%92-%D7%A7%D7%95%D7%9C%D7%A0%D7%95%D7%A2-%D7%91%D7%99%D7%AA%D7%99/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/better-home-theater-than-sound-bar/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/איך-לקנות-מגבר-רסיבר-ורמקולים-מדריך/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/how-to-choose-a-receiver-and-speakers/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%90%d7%99%d7%9a-%d7%9c%d7%a7%d7%a0%d7%95%d7%aa-%d7%9e%d7%92%d7%91%d7%a8-%d7%a8%d7%a1%d7%99%d7%91%d7%a8-%d7%95%d7%a8%d7%9e%d7%a7%d7%95%d7%9c%d7%99%d7%9d-%d7%9e%d7%93%d7%a8%d7%99%d7%9a/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/how-to-choose-a-receiver-and-speakers/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%90%D7%99%D7%9A-%D7%9C%D7%A7%D7%A0%D7%95%D7%AA-%D7%9E%D7%92%D7%91%D7%A8-%D7%A8%D7%A1%D7%99%D7%91%D7%A8-%D7%95%D7%A8%D7%9E%D7%A7%D7%95%D7%9C%D7%99%D7%9D-%D7%9E%D7%93%D7%A8%D7%99%D7%9A/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/how-to-choose-a-receiver-and-speakers/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/סוגיית-ה-sekiro-או-למה-אנחנו-מפחדים-מקושי/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/does-sekiro-need-an-easy-mode/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%a1%d7%95%d7%92%d7%99%d7%99%d7%aa-%d7%94-sekiro-%d7%90%d7%95-%d7%9c%d7%9e%d7%94-%d7%90%d7%a0%d7%97%d7%a0%d7%95-%d7%9e%d7%a4%d7%97%d7%93%d7%99%d7%9d-%d7%9e%d7%a7%d7%95%d7%a9%d7%99/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/does-sekiro-need-an-easy-mode/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%A1%D7%95%D7%92%D7%99%D7%99%D7%AA-%D7%94-sekiro-%D7%90%D7%95-%D7%9C%D7%9E%D7%94-%D7%90%D7%A0%D7%97%D7%A0%D7%95-%D7%9E%D7%A4%D7%97%D7%93%D7%99%D7%9D-%D7%9E%D7%A7%D7%95%D7%A9%D7%99/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/does-sekiro-need-an-easy-mode/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/15-galaxy-fold-and-folding-phone-screens/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/podcast-15-galaxy-fold-and-folding-phone-screens/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/כנס-wwdc-מצגת-הפתיחה-סיכום/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/wwdc-opening-keynote-summary/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%9b%d7%a0%d7%a1-wwdc-%d7%9e%d7%a6%d7%92%d7%aa-%d7%94%d7%a4%d7%aa%d7%99%d7%97%d7%94-%d7%a1%d7%99%d7%9b%d7%95%d7%9d/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/wwdc-opening-keynote-summary/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%9B%D7%A0%D7%A1-wwdc-%D7%9E%D7%A6%D7%92%D7%AA-%D7%94%D7%A4%D7%AA%D7%99%D7%97%D7%94-%D7%A1%D7%99%D7%9B%D7%95%D7%9D/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/wwdc-opening-keynote-summary/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/changing-from-playstation-4-to-pc-gaming/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/switching-from-playstation-4-to-pc/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/מה-היא-טכנולוגיית-פרסום-הגדרה-תכונות-ו/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/what-is-digital-advertising/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%9e%d7%94-%d7%94%d7%99%d7%90-%d7%98%d7%9b%d7%a0%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%99%d7%aa-%d7%a4%d7%a8%d7%a1%d7%95%d7%9d-%d7%94%d7%92%d7%93%d7%a8%d7%94-%d7%aa%d7%9b%d7%95%d7%a0%d7%95%d7%aa-%d7%95/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/what-is-digital-advertising/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%9E%D7%94-%D7%94%D7%99%D7%90-%D7%98%D7%9B%D7%A0%D7%95%D7%9C%D7%95%D7%92%D7%99%D7%99%D7%AA-%D7%A4%D7%A8%D7%A1%D7%95%D7%9D-%D7%94%D7%92%D7%93%D7%A8%D7%94-%D7%AA%D7%9B%D7%95%D7%A0%D7%95%D7%AA-%D7%95/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/what-is-digital-advertising/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/הצדק-הוא-עיוור-למה-לא-נראה-את-סדרת-judgment-על-ה/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/blind-justice-judgment-not-coming-to-pc/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%94%d7%a6%d7%93%d7%a7-%d7%94%d7%95%d7%90-%d7%a2%d7%99%d7%95%d7%95%d7%a8-%d7%9c%d7%9e%d7%94-%d7%9c%d7%90-%d7%a0%d7%a8%d7%90%d7%94-%d7%90%d7%aa-%d7%a1%d7%93%d7%a8%d7%aa-judgment-%d7%a2%d7%9c-%d7%94/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/blind-justice-judgment-not-coming-to-pc/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%94%D7%A6%D7%93%D7%A7-%D7%94%D7%95%D7%90-%D7%A2%D7%99%D7%95%D7%95%D7%A8-%D7%9C%D7%9E%D7%94-%D7%9C%D7%90-%D7%A0%D7%A8%D7%90%D7%94-%D7%90%D7%AA-%D7%A1%D7%93%D7%A8%D7%AA-judgment-%D7%A2%D7%9C-%D7%94/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/blind-justice-judgment-not-coming-to-pc/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/אמא-מה-אהיה-כשאגדל/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/what-will-i-be-when-i-grow-up/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%90%d7%9e%d7%90-%d7%9e%d7%94-%d7%90%d7%94%d7%99%d7%94-%d7%9b%d7%a9%d7%90%d7%92%d7%93%d7%9c/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/what-will-i-be-when-i-grow-up/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%90%D7%9E%D7%90-%D7%9E%D7%94-%D7%90%D7%94%D7%99%D7%94-%D7%9B%D7%A9%D7%90%D7%92%D7%93%D7%9C/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/what-will-i-be-when-i-grow-up/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/סקירה-בדקה-deaths-door/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/deaths-door-one-minute-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%a1%d7%a7%d7%99%d7%a8%d7%94-%d7%91%d7%93%d7%a7%d7%94-deaths-door/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/deaths-door-one-minute-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%A1%D7%A7%D7%99%D7%A8%D7%94-%D7%91%D7%93%D7%A7%D7%94-deaths-door/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/deaths-door-one-minute-review/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/סקירה-בדקה-prickle-והחשיבות-בדמואים/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/prickle-demo-demo-exprience/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%d7%a1%d7%a7%d7%99%d7%a8%d7%94-%d7%91%d7%93%d7%a7%d7%94-prickle-%d7%95%d7%94%d7%97%d7%a9%d7%99%d7%91%d7%95%d7%aa-%d7%91%d7%93%d7%9e%d7%95%d7%90%d7%99%d7%9d/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/prickle-demo-demo-exprience/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/%D7%A1%D7%A7%D7%99%D7%A8%D7%94-%D7%91%D7%93%D7%A7%D7%94-prickle-%D7%95%D7%94%D7%97%D7%A9%D7%99%D7%91%D7%95%D7%AA-%D7%91%D7%93%D7%9E%D7%95%D7%90%D7%99%D7%9D/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/prickle-demo-demo-exprience/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    },
+    {
+      "src": "^/prickle-demo-demo-exprience/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/prickle-demo-exprience/",
+        "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
+      }
+    }
+  ]
+}
