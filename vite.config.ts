@@ -6,6 +6,7 @@ import { nitro } from "nitro/vite";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import { defineConfig, type Plugin } from "vite";
+import { spotifyEmbed } from "./src/mdx/spotify-embed";
 
 function mdxFile(source: string, importer?: string): string | null {
   const file = source.split("?")[0].replace(/^\/@fs\//, "");
@@ -36,6 +37,7 @@ function solidMdx(): Plugin {
         jsx: true,
         jsxImportSource: "solid-js",
         remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+        rehypePlugins: [spotifyEmbed],
       });
       // MDX emits <_components.p>, which Solid SSR treats as a component call.
       // Intrinsic tags have to be literal elements for the Solid compiler.

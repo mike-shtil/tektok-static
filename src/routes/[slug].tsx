@@ -5,8 +5,10 @@ import { Dynamic } from "solid-js/web";
 import { css } from "../../styled-system/css";
 import { CategoryChip } from "../components/CategoryChip";
 import { Layout } from "../components/Layout";
+import { PodcastPlayer } from "../components/PodcastPlayer";
 import { PostFields } from "../components/PostFields";
 import { formatPostDate, getPost, routeSlug } from "../content";
+import { episodeForPost } from "../podcast/episodes";
 
 export default function PostPage() {
   const params = useParams();
@@ -127,6 +129,9 @@ export default function PostPage() {
               alt=""
               class={css({ width: "100%", height: "auto", maxHeight: "500px", objectFit: "cover" })}
             />
+            <Show when={episodeForPost(article().slug)}>
+              {(episode) => <PodcastPlayer episode={episode()} />}
+            </Show>
             <div class="prose">
               <Dynamic component={article().Content} />
             </div>

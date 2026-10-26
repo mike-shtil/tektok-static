@@ -81,6 +81,47 @@ function localImage(url: string): string {
 
 const mediaByFile = new Map(media.map((item) => [item.file, item]));
 
+// podcasts.tektok.co.il does not serve these files. The live site still does, via Podlove.
+const playback: Record<string, string> = {
+  "23_PlayStation_5.mp3": "https://tektok.co.il/podlove/file/133/s/feed/c/mp3/23_PlayStation_5.mp3",
+  "24_the_gaming_channel_launch.mp3":
+    "https://tektok.co.il/podlove/file/128/s/feed/c/mp3/24_the_gaming_channel_launch.mp3",
+  "22_windows_11.mp3": "https://tektok.co.il/podlove/file/123/s/feed/c/mp3/22_windows_11.mp3",
+  "21_corona_days.mp3": "https://tektok.co.il/podlove/file/119/s/feed/c/mp3/21_corona_days.mp3",
+  "20_digital_diet.mp3": "https://tektok.co.il/podlove/file/115/s/feed/c/mp3/20_digital_diet.mp3",
+  "19_twitch_streaming_FiendRiver_interview.mp3":
+    "https://tektok.co.il/podlove/file/107/s/feed/c/mp3/19_twitch_streaming_FiendRiver_interview.mp3",
+  "18_future_mobility_interview.mp3":
+    "https://tektok.co.il/podlove/file/103/s/feed/c/mp3/18_future_mobility_interview.mp3",
+  "17_the_state_of_personal_transportation.mp3":
+    "https://tektok.co.il/podlove/file/99/s/feed/c/mp3/17_the_state_of_personal_transportation.mp3",
+  "16_alon_karmi_brings_the_mustache_back.mp3":
+    "https://tektok.co.il/podlove/file/92/s/feed/c/mp3/16_alon_karmi_brings_the_mustache_back.mp3",
+  "15_the_galaxy_fold_and_folding_phone_screens.mp3":
+    "https://tektok.co.il/podlove/file/83/s/feed/c/mp3/15_the_galaxy_fold_and_folding_phone_screens.mp3",
+  "14_google_stadia_cloud_gaming.mp3":
+    "https://tektok.co.il/podlove/file/81/s/feed/c/mp3/14_google_stadia_cloud_gaming.mp3",
+  "13_when_facebook_goes_down.mp3":
+    "https://tektok.co.il/podlove/file/78/s/feed/c/mp3/13_when_facebook_goes_down.mp3",
+  "12_buying_and_selling_second_hand.mp3":
+    "https://tektok.co.il/podlove/file/74/s/feed/c/mp3/12_buying_and_selling_second_hand.mp3",
+  "11_consumer_product_research.mp3":
+    "https://tektok.co.il/podlove/file/71/s/feed/c/mp3/11_consumer_product_research.mp3",
+  "10_home_audio_equipment.mp3": "https://tektok.co.il/podlove/file/65/s/feed/c/mp3/10_home_audio_equipment.mp3",
+  "09_what_phone_to_choose_2019_android_vs_ios.mp3":
+    "https://tektok.co.il/podlove/file/61/s/feed/c/mp3/09_what_phone_to_choose_2019_android_vs_ios.mp3",
+  "08_consoles_vs_pc_2019.mp3": "https://tektok.co.il/podlove/file/54/s/feed/c/mp3/08_consoles_vs_pc_2019.mp3",
+  "07_how_to_make_a_podcast.mp3": "https://tektok.co.il/podlove/file/44/s/feed/c/mp3/07_how_to_make_a_podcast.mp3",
+  "06_netflix_and_video_streaming.mp3":
+    "https://tektok.co.il/podlove/file/41/s/feed/c/mp3/06_netflix_and_video_streaming.mp3",
+  "05_e_bike_outrage.mp3": "https://tektok.co.il/podlove/file/31/s/feed/c/mp3/05_e_bike_outrage.mp3",
+  "04_internet_privacy_and_censorship.mp3":
+    "https://tektok.co.il/podlove/file/22/s/feed/c/mp3/04_internet_privacy_and_censorship.mp3",
+  "03_gaming_in_your_30s.mp3": "https://tektok.co.il/podlove/file/13/s/feed/c/mp3/03_gaming_in_your_30s.mp3",
+  "02_online_shopping.mp3": "https://tektok.co.il/podlove/file/11/s/feed/c/mp3/02_online_shopping.mp3",
+  "01_bird_scooters.mp3": "https://tektok.co.il/podlove/file/1/s/feed/c/mp3/01_bird_scooters.mp3",
+};
+
 export const episodes: Episode[] = [...feedXml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((match) => {
   const block = match[1];
   const enclosure = block.match(/<enclosure url="([^"]+)" length="(\d+)"/);
@@ -97,7 +138,13 @@ export const episodes: Episode[] = [...feedXml.matchAll(/<item>([\s\S]*?)<\/item
     image: image ? localImage(image[1]) : "/tektok-podcast-cover.jpg",
     bytes: stored?.bytes ?? Number(enclosure?.[2] ?? 0),
     file,
-    audio: stored?.enclosure ?? fileUrl,
+    audio: playback[file] ?? stored?.enclosure ?? fileUrl,
     guid: tag(block, "guid"),
   };
 });
+
+const episodeByHref = new Map(episodes.map((episode) => [episode.href, episode]));
+
+export function episodeForPost(slug: string): Episode | undefined {
+  return episodeByHref.get(`/${slug}/`);
+}

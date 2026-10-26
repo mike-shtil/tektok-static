@@ -66,9 +66,23 @@ export default defineConfig({
       marginTop: "0",
       marginBottom: "1.2em",
     },
-    ".prose img, .prose iframe, .prose video": {
+    ".prose img, .prose video": {
       maxWidth: "100%",
       height: "auto",
+    },
+    ".prose iframe": {
+      maxWidth: "100%",
+      border: "0",
+    },
+    ".prose iframe[src*='youtube.com'], .prose iframe[src*='youtube-nocookie.com']": {
+      width: "100%",
+      aspectRatio: "16 / 9",
+      height: "auto",
+    },
+    ".prose iframe[src*='open.spotify.com']": {
+      width: "100%",
+      display: "block",
+      borderRadius: "12px",
     },
     ".prose figure": {
       margin: "0 0 1.2em",
