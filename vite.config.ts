@@ -72,6 +72,9 @@ export default defineConfig({
   plugins: [tektokSitemap(), solidMdx(), solidStart({ middleware: path.resolve("src/middleware.ts") }), nitro()],
   nitro: {
     preset: "static",
+    // Rolldown can place the __exportAll helper in a chunk that imports itself.
+    // One prerender bundle avoids that cycle (vite#rolldown 8809 / 9161).
+    inlineDynamicImports: true,
     prerender: {
       crawlLinks: true,
       failOnError: true,
