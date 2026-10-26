@@ -1,5 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "pnpm build",
+  "outputDirectory": ".output/public",
   "routes": [
     {
       "src": "^/feed/mp3/$",
@@ -1070,6 +1073,7 @@
         "Location": "/prickle-demo-exprience/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
-    }
+    },
+    { "handle": "filesystem" }
   ]
 }

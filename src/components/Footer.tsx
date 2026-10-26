@@ -17,6 +17,7 @@ export function Footer() {
 
   return (
     <footer
+      style={{ "view-transition-name": "site-footer" }}
       class={css({
         padding: "30px 15px",
         backgroundColor: "#2b232f",

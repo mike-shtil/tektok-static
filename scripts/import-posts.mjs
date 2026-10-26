@@ -1,5 +1,6 @@
 import { copyFileSync, existsSync, mkdirSync, readdirSync, unlinkSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import { compile } from "@mdx-js/mdx";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
@@ -20,7 +21,7 @@ const wanted = new Set([
   "pdfr2rx_term_relationships",
 ]);
 
-const metaKeys = new Set(["_thumbnail_id", "unbiased", "rating", "_wp_attached_file"]);
+const metaKeys = new Set(["_thumbnail_id", "unbiased", "rating", "_wp_attached_file", "_wp_attachment_image_alt"]);
 
 function readString(sql, i, quote) {
   let out = "";
@@ -118,10 +119,11 @@ function skipStatement(sql, start) {
   return i;
 }
 
-function loadSql(sql) {
+export function loadSql(sql, types = new Set(["post"])) {
   const users = [];
   const userMeta = new Map();
   const posts = [];
+  const attachments = new Map();
   const postMeta = new Map();
   const files = new Map();
   const terms = new Map();
@@ -162,7 +164,14 @@ function loadSql(sql) {
       } else if (table === "pdfr2rx_posts" && row.length >= 23) {
         const type = row[20];
         const status = row[7];
-        if (type === "post" && status === "publish") {
+        if (type === "attachment") {
+          const existing = attachments.get(Number(row[0])) ?? {};
+          attachments.set(Number(row[0]), {
+            ...existing,
+            title: row[5] ?? "",
+            caption: row[6] ?? "",
+          });
+        } else if (types.has(type) && status === "publish") {
           posts.push({
             id: Number(row[0]),
             authorId: Number(row[1]),
@@ -172,6 +181,7 @@ function loadSql(sql) {
             excerpt: row[6] ?? "",
             slug: row[11] ?? "",
             comments: Number(row[22] ?? 0),
+            type,
           });
         }
       } else if (table === "pdfr2rx_postmeta" && row.length >= 4 && metaKeys.has(row[2])) {
@@ -179,7 +189,11 @@ function loadSql(sql) {
         const key = row[2];
         const value = row[3] ?? "";
         if (key === "_wp_attached_file") files.set(postId, value);
-        else {
+        else if (key === "_wp_attachment_image_alt") {
+          const item = attachments.get(postId) ?? { title: "", caption: "" };
+          item.alt = value;
+          attachments.set(postId, item);
+        } else {
           const bag = postMeta.get(postId) ?? {};
           if (key === "_thumbnail_id") bag.thumbnailId = Number(value);
           else if (key === "unbiased") bag.disclosure = value;
@@ -207,10 +221,10 @@ function loadSql(sql) {
     });
   }
 
-  return { users, userMeta, posts, postMeta, files, terms, taxonomies, relationships };
+  return { users, userMeta, posts, postMeta, files, terms, taxonomies, relationships, attachments };
 }
 
-function decodeWp(value) {
+export function decodeWp(value) {
   if (!value) return "";
   let current = value;
   for (let i = 0; i < 2; i += 1) {
@@ -226,7 +240,7 @@ function decodeWp(value) {
   return current;
 }
 
-function decodeEntities(value) {
+export function decodeEntities(value) {
   return value
     .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
     .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
@@ -238,7 +252,7 @@ function decodeEntities(value) {
     .replace(/&amp;/g, "&");
 }
 
-function plainText(html) {
+export function plainText(html) {
   return decodeEntities(html.replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
 }
 
@@ -265,7 +279,7 @@ function yaml(value) {
 
 const copied = new Map();
 
-function copyUpload(relative) {
+export function copyUpload(relative) {
   const clean = decodeURIComponent(relative.split("?")[0].split("#")[0]).replace(/^\/+/, "");
   if (!clean || !/\.(jpe?g|png|gif|webp|svg|avif)$/i.test(clean)) return null;
   if (copied.has(clean)) return copied.get(clean);
@@ -284,12 +298,12 @@ function copyUpload(relative) {
 
 function rewriteUploads(html) {
   return html.replace(
-    /(?:https?:)?\/\/(?:www\.)?tektok\.co\.il\/wp-content\/uploads\/([^"'\\\s>]+)|(?:^|["'(=\s])\/wp-content\/uploads\/([^"'\\\s>]+)/gi,
-    (match, absolute, relative) => {
-      const file = absolute || relative;
+    /(?:https?:)?\/\/(?:www\.)?tektok\.co\.il\/wp-content\/uploads\/([^"'\\\s>]+)|(?:https?:)?\/\/localhost\/tektok\/wp-content\/uploads\/([^"'\\\s>]+)|(?:^|["'(=\s])\/wp-content\/uploads\/([^"'\\\s>]+)/gi,
+    (match, absolute, localhost, relative) => {
+      const file = absolute || localhost || relative;
       const local = copyUpload(file);
       if (!local) return match;
-      if (absolute) return local;
+      if (absolute || localhost) return local;
       return match.replace(/\/wp-content\/uploads\/[^"'\\\s>]+/, local);
     },
   );
@@ -305,8 +319,26 @@ function rewriteLinks(html) {
   });
 }
 
-function prepareHtml(html) {
+export function prepareHtml(html, attachments = new Map(), files = new Map()) {
   let next = html.replace(/\r\n/g, "\n").replace(/<!--[\s\S]*?-->/g, "");
+  next = next.replace(/\[gallery([^\]]*)\]/gi, (_, attrs) => {
+    const ids = attrs.match(/ids=["']([^"']+)["']/i)?.[1];
+    if (!ids) return "";
+    return ids
+      .split(",")
+      .map((raw) => {
+        const id = Number(raw.trim());
+        const file = files.get(id);
+        const src = file ? copyUpload(file) : "";
+        if (!src) return "";
+        const item = attachments.get(id) ?? {};
+        const alt = decodeEntities(item.alt || item.title || "").replace(/"/g, "&quot;");
+        const caption = decodeEntities(item.caption || "").trim();
+        return `<figure><img src="${src}" alt="${alt}" />${caption ? `<figcaption>${caption}</figcaption>` : ""}</figure>`;
+      })
+      .filter(Boolean)
+      .join("\n");
+  });
   next = next.replace(/\[caption[^\]]*\]([\s\S]*?)\[\/caption\]/gi, (_, inner) => {
     const image = inner.match(/<img\b[^>]*>/i)?.[0] ?? "";
     const caption = inner.replace(/<img\b[^>]*>/i, "").trim();
@@ -333,15 +365,24 @@ function prepareHtml(html) {
   next = rewriteLinks(next);
   next = next.replace(/<(?![A-Za-z/!?])/g, "&lt;");
   next = next.replace(/[{]/g, "&#123;").replace(/[}]/g, "&#125;");
+  next = next.replace(/([^<]+)(?=<|$)/g, (text) =>
+    text
+      .replace(/\.{3}/g, "…")
+      .replace(/:-o\b/gi, "😮")
+      .replace(/:-P\b/g, "😛")
+      .replace(/:-D\b/g, "😃")
+      .replace(/:-\)/g, "🙂")
+      .replace(/;\-\)/g, "😉"),
+  );
   return next.trim();
 }
 
-function jsTemplate(html) {
+export function jsTemplate(html) {
   const escaped = html.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$\{/g, "\\${").replace(/</g, "\\u003c");
   return "`" + escaped + "`";
 }
 
-function mdxDocument(post, body) {
+export function mdxDocument(post, body) {
   const lines = [
     "---",
     `title: ${yaml(post.title)}`,
@@ -360,7 +401,7 @@ function mdxDocument(post, body) {
   return lines.join("\n");
 }
 
-async function compiles(source) {
+export async function compiles(source) {
   try {
     await compile(source, {
       jsx: true,
@@ -405,6 +446,8 @@ function writeAuthors(records) {
   writeFileSync(path.join(root, "src/content/authors.ts"), lines.join("\n"), "utf8");
 }
 
+const isDirectRun = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+if (isDirectRun) {
 const sql = await (await import("node:fs/promises")).readFile(sqlPath, "utf8");
 console.log("parsing", sql.length);
 const data = loadSql(sql);
@@ -471,7 +514,7 @@ for (const post of data.posts) {
     comments: post.comments,
     disclosure,
     rating: rating >= 1 && rating <= 5 ? rating : 0,
-    html: prepareHtml(post.content),
+    html: prepareHtml(post.content, data.attachments, data.files),
   });
 }
 
@@ -536,3 +579,4 @@ console.log({
   failures,
 });
 console.log(authorRecords.map((author) => `${author.slug} | ${author.name} | ${author.bio ? "bio" : "no-bio"} | ${author.avatar || "no-avatar"}`).join("\n"));
+}

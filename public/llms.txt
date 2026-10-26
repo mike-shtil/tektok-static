@@ -1,0 +1,23 @@
+# TekTok
+
+> מגזין עברי לטכנולוגיה, גיימינג ותרבות. האתר עלה ב-2014 ומפרסם מדריכים, ביקורות, דעות וכתבות מקוריות. בסקירות מוצר מופיע גילוי נאות כשיש קשר בין הכותב למוצר.
+
+התוכן בעברית. כל כתבה היא עמוד HTML בכתובת `https://tektok.co.il/{slug}/`, עם כותרת, תאריך, מחברים וקטגוריות. אין גרסת Markdown נפרדת; יש לקרוא את עמוד ה-HTML.
+
+## מדורים
+
+- [דף הבית](https://tektok.co.il/): כתבות אחרונות
+- [מובייל](https://tektok.co.il/category/%d7%9e%d7%95%d7%91%d7%99%d7%99%d7%9c/): טלפונים, מערכות הפעלה וחומרה ניידת
+- [גיימינג](https://tektok.co.il/category/%d7%92%d7%99%d7%99%d7%9e%d7%99%d7%a0%d7%92/): משחקים, קונסולות ומחשב
+- [גאדג'טים](https://tektok.co.il/category/%d7%92%d7%90%d7%93%d7%92%d7%98%d7%99%d7%9d/): מכשירים וציוד. הסלאג הוא גאדגטים, בלי גרש
+- [ביקורות](https://tektok.co.il/category/%d7%91%d7%99%d7%a7%d7%95%d7%a8%d7%95%d7%aa/): סקירות מוצר ומשחקים
+- [מגזין](https://tektok.co.il/category/%d7%9e%d7%92%d7%96%d7%99%d7%9f/): כתבות, דעות ומדריכים
+- [פודקאסט](https://tektok.co.il/podcasts/): פרקי TekTok, עם נגן לכל פרק
+- [מי זה טקטוק?](https://tektok.co.il/who-is-tektok/): על האתר, השקיפות וגילוי הנאות
+
+## Optional
+
+- [פיד MP3](https://tektok.co.il/feed/mp3/): פיד הפודקאסט
+- [Apple Podcasts](https://itunes.apple.com/il/podcast/id1444232181)
+- [Spotify](https://open.spotify.com/show/7zC71kBT9R5p4ZhHYLXzCy)
+- [Facebook](https://www.facebook.com/TekTokBoard/)

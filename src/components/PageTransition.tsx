@@ -25,13 +25,10 @@ function waitUntilSettled(from: string, pathname: () => string, isRouting: () =>
   return new Promise<void>((resolve) => {
     const started = performance.now();
     let steps = 0;
-    const notes: Array<{ step: number; dt: number; path: string; routing: boolean }> = [];
     const tick = () => {
-      const path = untrack(pathname);
+      const moved = untrack(pathname) !== from;
       const routing = untrack(isRouting);
-      notes.push({ step: steps, dt: Math.round(performance.now() - started), path, routing });
-      if ((path !== from && !routing) || steps >= 8 || performance.now() - started > 2000) {
-        (window as unknown as { __vtNotes?: unknown }).__vtNotes = notes;
+      if ((moved && !routing) || steps >= 8 || performance.now() - started > 1500) {
         resolve();
         return;
       }
@@ -53,10 +50,10 @@ export function PageTransition() {
   const isRouting = useIsRouting();
 
   useBeforeLeave((event) => {
-    if (event.defaultPrevented) return;
+    if (event.defaultPrevented || typeof event.to === "number") return;
     const start = startViewTransition();
     if (!start || document.visibilityState === "hidden" || prefersReducedMotion()) return;
-    if (typeof event.to === "string" && pathnameOf(event.to) === location.pathname) return;
+    if (pathnameOf(event.to) === location.pathname) return;
 
     const from = location.pathname;
     event.preventDefault();

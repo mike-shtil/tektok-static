@@ -14,12 +14,33 @@ export function Hero() {
         alignItems: "flex-end",
         justifyContent: "center",
         padding: "30px",
-        backgroundColor: "#120c16",
-        backgroundImage: "url(/media/prickle.jpg)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundColor: "#000",
       })}
     >
+      <div
+        class={css({
+          position: "absolute",
+          inset: "0",
+          zIndex: "0",
+          overflow: "hidden",
+        })}
+      >
+        <iframe
+          id="hero-player"
+          title="TekTok"
+          src="https://www.youtube.com/embed/videoseries?list=PLbBnPOihibgxDkr5HhTA9a0XePy7k07_y&rel=0&loop=1&autoplay=1&mute=1&controls=0&showinfo=0&enablejsapi=1&playsinline=1"
+          allow="autoplay; encrypted-media"
+          class={css({
+            position: "absolute",
+            top: "50%",
+            left: "0",
+            width: "100%",
+            height: "1080px",
+            transform: "translateY(-50%)",
+            border: "0",
+          })}
+        />
+      </div>
       <div
         class={css({
           position: "absolute",

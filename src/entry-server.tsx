@@ -8,6 +8,7 @@ export default createHandler(() => (
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.png" />
+          <link rel="describedby" href="/llms.txt" />
           <link
             rel="alternate"
             type="application/rss+xml"

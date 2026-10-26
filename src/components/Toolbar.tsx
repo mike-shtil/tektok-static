@@ -43,6 +43,7 @@ export function Toolbar(props: { showLogo: boolean }) {
 
   return (
     <aside
+      style={{ "view-transition-name": "site-nav" }}
       class={css({
         display: "flex",
         flexDirection: "column",

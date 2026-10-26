@@ -9,6 +9,15 @@
   mix-blend-mode: normal;
 }
 
+::view-transition-group(site-nav),
+::view-transition-old(site-nav),
+::view-transition-new(site-nav),
+::view-transition-group(site-footer),
+::view-transition-old(site-footer),
+::view-transition-new(site-footer) {
+  animation: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(root),
   ::view-transition-new(root) {
