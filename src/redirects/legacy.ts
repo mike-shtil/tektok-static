@@ -32,20 +32,25 @@ function regexFor(pattern: string): RegExp {
   return compiledPattern;
 }
 
+/** Location is a header value, so it has to be Latin-1. Percent-encode the rest. */
+function headerLocation(location: string): string {
+  return encodeURI(location);
+}
+
 export function legacyRedirect(url: URL): { location: string; status: number } | undefined {
   const path = requestPath(url);
   for (const rule of list) {
     if (rule.kind === "exact") {
-      if (path === rule.from) return { location: rule.to, status: rule.status };
+      if (path === rule.from) return { location: headerLocation(rule.to), status: rule.status };
       continue;
     }
     if (rule.kind === "query") {
-      if (url.searchParams.has(rule.key)) return { location: rule.to, status: rule.status };
+      if (url.searchParams.has(rule.key)) return { location: headerLocation(rule.to), status: rule.status };
       continue;
     }
     const pattern = regexFor(rule.pattern);
     if (!pattern.test(path)) continue;
-    return { location: path.replace(pattern, rule.to), status: rule.status };
+    return { location: headerLocation(path.replace(pattern, rule.to)), status: rule.status };
   }
   return undefined;
 }
