@@ -8,6 +8,12 @@ export default createHandler(() => (
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.png" />
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="Podcast Feed: פודקאסט TekTok (MP3 Feed)"
+            href="/feed/mp3/"
+          />
           <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/opensanshebrew.css" />
           {assets}
         </head>

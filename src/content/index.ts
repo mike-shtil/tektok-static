@@ -1,10 +1,7 @@
 import type { Component } from "solid-js";
+import { authors, type Author } from "./authors";
 
-export type Author = {
-  name: string;
-  avatar?: string;
-  bio?: string;
-};
+export type { Author };
 
 export type Category = {
   slug: string;
@@ -91,13 +88,17 @@ const modules = import.meta.glob<{
     date: string;
     excerpt: string;
     image: string;
-    authors: Author[];
+    authors: string[];
     categories: string[];
     comments?: number;
     disclosure?: string;
     rating?: number;
   };
 }>("./posts/*.mdx", { eager: true });
+
+function resolveAuthor(slug: string): Author {
+  return authors[slug] ?? { slug, name: slug };
+}
 
 function categoryBySlug(value: string): Category {
   return (
@@ -122,8 +123,8 @@ export function listPosts(): Post[] {
         date: mod.frontmatter.date,
         excerpt: mod.frontmatter.excerpt,
         image: mod.frontmatter.image,
-        authors: mod.frontmatter.authors,
-        categories: mod.frontmatter.categories.map(categoryBySlug),
+        authors: (mod.frontmatter.authors ?? []).map(resolveAuthor),
+        categories: (mod.frontmatter.categories ?? []).map(categoryBySlug),
         comments: mod.frontmatter.comments ?? 0,
         disclosure: mod.frontmatter.disclosure,
         rating: mod.frontmatter.rating,

@@ -1,3 +1,8 @@
+declare module "*.xml?raw" {
+  const content: string;
+  export default content;
+}
+
 declare module "*.mdx" {
   import type { Component } from "solid-js";
   export const frontmatter: {
@@ -5,9 +10,11 @@ declare module "*.mdx" {
     date: string;
     excerpt: string;
     image: string;
-    authors: { name: string; avatar?: string }[];
+    authors: string[];
     categories: string[];
     comments?: number;
+    disclosure?: string;
+    rating?: number;
   };
   const Content: Component;
   export default Content;

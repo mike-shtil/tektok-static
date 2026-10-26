@@ -154,6 +154,48 @@ for (const row of enabled) {
   rules.push({ id: row.id, kind: "exact", from, to, status });
 }
 
+function matchPath(pathName) {
+  for (const rule of rules) {
+    if (rule.kind === "exact") {
+      if (pathName === rule.from) return rule.to;
+      continue;
+    }
+    if (rule.kind !== "regex") continue;
+    const pattern = new RegExp(rule.pattern);
+    if (pattern.test(pathName)) return pathName.replace(pattern, rule.to);
+  }
+  return undefined;
+}
+
+function follow(start) {
+  let current = start;
+  const seen = new Set();
+  for (let hop = 0; hop < 8; hop++) {
+    if (/^https?:\/\//i.test(current)) return current;
+    const key = stripSlashes(current.split("?")[0]);
+    if (seen.has(key)) return current;
+    seen.add(key);
+    const next = matchPath(key);
+    if (!next) return current;
+    const nextKey = /^https?:\/\//i.test(next) ? next : stripSlashes(next.split("?")[0]);
+    if (nextKey === key) return current;
+    current = next;
+  }
+  return current;
+}
+
+function withSlash(target) {
+  if (/^https?:\/\//i.test(target) || target.includes("?") || target.endsWith("/")) return target;
+  if (/\.[a-z0-9]+$/i.test(target)) return target;
+  return `${target}/`;
+}
+
+for (const rule of rules) {
+  if (rule.kind === "query") continue;
+  if (!rule.to.includes("$")) rule.to = follow(rule.to);
+  rule.to = withSlash(rule.to);
+}
+
 const rulesPath = path.join(root, "src/redirects/rules.json");
 writeFileSync(rulesPath, `${JSON.stringify(rules, null, 2)}\n`);
 
@@ -183,7 +225,7 @@ for (const rule of rules) {
   const headers = { Location: rule.to, "Cache-Control": CACHE_CONTROL };
   if (rule.kind === "query") {
     pushRoute({
-      src: "^(?:/.*)?$",
+      src: "^/.*$",
       has: [{ type: "query", key: rule.key }],
       status: rule.status,
       headers,

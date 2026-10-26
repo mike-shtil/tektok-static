@@ -1,0 +1,87 @@
+---
+title: "Moto G, פתיחת ה-bootloader, התקנת recovery חלופי, התקנת שפות נוספות ו-root במידת הצורך."
+date: "2014-01-19T19:43:11"
+excerpt: "את המדריך הזה אני כותב עקב התנסות לא צפויה(ושלילית) עם 2 מכשירי Moto G שהגיעו לידי. הסתבר לי שגרסת ה-Global של המכשיר מגיע עם רשימה מאוד מצומצת של שפות(מוטורולה החליטו להחביא את רובן), כאשר עברית לא נמצאת ברשימה הגלויה. לא רק שהעברית לא נמצאת ברשימה אלא מסתבר שגם תוכנת Morelocale 2 שבדרך כלל פתרה לי…"
+image: "/tektok-logo-light-lg.png"
+authors:
+  - jacob
+categories:
+  - "כללי"
+comments: 9
+---
+
+<div innerHTML={`את המדריך הזה אני כותב  עקב התנסות לא צפויה(ושלילית) עם 2 מכשירי Moto G שהגיעו לידי. הסתבר לי שגרסת ה-Global של המכשיר מגיע עם רשימה מאוד מצומצת של שפות(מוטורולה החליטו להחביא את רובן), כאשר עברית לא נמצאת ברשימה הגלויה. לא רק שהעברית לא נמצאת ברשימה אלא מסתבר שגם תוכנת Morelocale 2 שבדרך כלל פתרה לי בעיות כאלה בעבר הצליחה לבצע תרגום חלקי בלבד כי מוטורולה לא הסתפקו להחביא את השפות אלא ממש הסירו אותן מגרסת האנדרואיד שמגיע עם המכשיר.\u003cbr />
+\u003cbr />
+כדי לקבל את העברית שרציתי, היו 2 אופציות, להתקין ROM שכולל בתוכו עברית או לחלופין להתקין קובץ תיקון שנשמה טובה הכינה.\u003cbr />
+\u003cbr />
+בשביל כל אחת מהאופציות יש צורך ב-bootloader פתוח ו-recovery חלופי.\u003cbr />
+\u003cbr />
+כל מה שנרשם במדריך והביצוע שלו הוא באחריות הבלעדית של המבצע ואין לי שום אחריות עבור הנזק שעלול להיגרם למכשיר שלכם.\u003cbr />
+\u003cbr />
+\u003cb>\u003cu>הכנת המכשיר-שידע לעבוד מול המחשב\u003c/u>\u003c/b>
+\u003cul class="bbcode_list">
+\u003cli>כניסה להגדרות, ירידה עד למטה ולחיצה על "about phone"\u003c/li>
+\u003cli>ירידה למטה עד ל-Build number ולחיצה עליו מספיק פעמים עד שהמשפט "you are now  a !developer" יופיע.\u003c/li>
+\u003cli>jחזרה לתפריט הקוד, שוב גלילה מטה אל תפריט חדש שנפתח בשם "Developer options" ולחיצה עליו\u003c/li>
+\u003cli>סימון ב-V את האפציה ששמה "USB debugging"\u003c/li>
+\u003c/ul>
+\u003cu>\u003cb>פתיחת נעילת המכשיר(ה-bootloader)-פעולה זו תמחק את כל המידע שעל המכשיר.\u003c/b>\u003c/u>
+\u003cul class="bbcode_list">
+\u003cli>מתקינים את ה-\u003ca href="http://developer.android.com/sdk/index.html" class="bbcode_url">SDK\u003c/a>,(כאשר ההתקנה תהיה בתוך התקיה אליה הורדנו את הSDK) של אנדרואיד ואת \u003ca href="https://motorola-global-portal.custhelp.com/app/answers/detail/a_id/88481" class="bbcode_url">Motorola Device Manager\u003c/a> מחברים את המכשיר הדולק במצב רגיל למחשב ונותנים לוינדוס לזהות אותו.\u003cbr />
+\u003c/li>
+\u003cli>מנתקים את המכשיר, מכבים אותו ומדליקים אותו לתוך מצב ה-bootloader, בעזרת החזקה של מקש ההדלקה ומקש הווליום התחתון(בו זמנית) ומחברים אותו שוב למחשב.\u003cbr />
+\u003c/li>
+\u003cli>במחשב לוחצים על start ובשורת "search programs and files"  רושמים "cmd" ומנוטים עזרת פקודות DOS אל תקיית הSDK, אל תת תקיה platform-tools.
+\u003cul class="bbcode_list">
+\u003cli>אני הורדתי את הSDK ל-D לכן הפקודות היו
+\u003cul class="bbcode_list">
+\u003cli>:d\u003cbr />
+\u003cbr />
+\u003c/li>
+\u003cli>cd adt-bundle-windows-x86-20131030sdkplatform-tools\u003cbr />
+\u003cbr />
+\u003c/li>
+\u003cli>fastboot oem get_unlock_data\u003c/li>
+\u003c/ul>
+\u003c/li>
+\u003c/ul>
+\u003c/li>
+\u003c/ul>
+
+\u003cul class="bbcode_list">
+\u003cli>את המידע(4 שורות של מספרים עם הרבה אפסים בסוף) מעתיקים \u003ca href="https://motorola-global-portal.custhelp.com/app/standalone/bootloader/unlock-your-device-b" class="bbcode_url">לעמוד של מוטורולה\u003c/a> תחת סעיף 6, לוחצים על can my device be unlocked? יורדים למטה בוחרים ב-"I agree" ומאשרים.\u003cbr />
+\u003c/li>
+\u003cli>משם ישלח לתיבת הדוא"ל(שמקושרת לחשבון איתו התחברתם בעמוד של מוטורולה) קוד פתיחת נעילת ה-bootloader.\u003cbr />
+\u003c/li>
+\u003cli>חוזרים לחלון ה-cmd שרץ לו ומקלידים fastboot oem unlock UNIQUE_KEY(כאשר במקום UNIQUE_KEY רושמים את הקוד שהתקבל בדוא"ל).\u003cbr />
+\u003c/li>
+\u003cli>בשלב הזה המכשיר יפעיל את עצמו מחדש וכל המידע שלכם ימחק.\u003cbr />
+\u003c/li>
+\u003cli>נמתין שהמכשיר יסיים לעלות, ננתק אותו מהמחשב ונכבה אותו.\u003c/li>
+\u003c/ul>
+\u003cb>\u003cu>התקנת recovery-מה שיאפשר לנו לדחוף קבצים בנוחות למכשיר.\u003c/u>\u003c/b>
+\u003cul class="bbcode_list">
+\u003cli>לאחר שממכשיר פתוח, נכנסים שוב ל-bootloader ומחברים למחשב.\u003cbr />
+\u003c/li>
+\u003cli>מעתיקים את \u003ca href="http://forum.xda-developers.com/showthread.php?t=2563599" class="bbcode_url">הקובץ \u003c/a>שהורדנו באשכול לתקיית platform-tools שב-SDK\u003cbr />
+\u003c/li>
+\u003cli>נכנסים שוב דרך ה-cmd(שעדיין רץ ברקע)  לתקיה ורושמים: fastboot flash recovery recovery.img נראה הן על מסך המחשב והן על הטלפון עצמו שנדחף קובץ למכשיר.\u003cbr />
+\u003c/li>
+\u003cli>מנתקים את המכשיר מהמחשב ומפעילים מחדש.\u003c/li>
+\u003c/ul>
+\u003cbr />
+\u003cb>\u003cu>התקנת שפות נוספות\u003c/u>\u003c/b>
+\u003cul class="bbcode_list">
+\u003cli>לאחר שיש לנו recovery הגיע הזמן להוסיף את השפות החסרות או לחלופין להתקין ROOT למכשיר.\u003cbr />
+\u003c/li>
+\u003cli>בזמן שהמכשיר דולק בצורה רגילה, מחברים למחשב ומעתיקים לתוכו את \u003ca href="http://www.modaco.com/topic/368098-mod-adding-languages-442-over-30-new/" class="bbcode_url">קובץ השפות\u003c/a>\u003cbr />
+\u003c/li>
+\u003cli>מפעילים את המכשיר למצב של bootloader, יורדים עם מקש הווליום התחתון אל ה-recovery ולוחצים על המקש הוליום העליון, מה שיפעיל את המכשיר מחדש ויכניס אותונו לריקברי.\u003cbr />
+\u003c/li>
+\u003cli>דרך הריקבורי בוחרים ומתקינים את קובץ הZIP שהעתקנו קודםן.\u003c/li>
+\u003cli>מפעילים את המכשיר מחדש, ומחכים שיעלה.\u003cbr />
+\u003c/li>
+\u003cli>יש את כל השפות במכשיר.\u003c/li>
+\u003c/ul>
+\u003cbr />
+בשלב הזה ניתן לחפש קובץ שיאפשר לנו root או לחלופין להתקין ROM אחר.`} />

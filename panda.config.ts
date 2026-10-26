@@ -66,5 +66,16 @@ export default defineConfig({
       marginTop: "0",
       marginBottom: "1.2em",
     },
+    ".prose img, .prose iframe, .prose video": {
+      maxWidth: "100%",
+      height: "auto",
+    },
+    ".prose figure": {
+      margin: "0 0 1.2em",
+    },
+    ".prose ul, .prose ol": {
+      paddingRight: "1.2em",
+      marginBottom: "1.2em",
+    },
   },
 });

@@ -2,6 +2,38 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "routes": [
     {
+      "src": "^/feed/mp3/$",
+      "dest": "/podcast/feed.xml",
+      "headers": {
+        "Content-Type": "application/rss+xml; charset=UTF-8",
+        "Cache-Control": "public, max-age=3600"
+      }
+    },
+    {
+      "src": "^/mp3/$",
+      "dest": "/podcast/feed.xml",
+      "headers": {
+        "Content-Type": "application/rss+xml; charset=UTF-8",
+        "Cache-Control": "public, max-age=3600"
+      }
+    },
+    {
+      "src": "^/feed/mp3$",
+      "status": 301,
+      "headers": {
+        "Location": "/feed/mp3/",
+        "Cache-Control": "public, max-age=3600"
+      }
+    },
+    {
+      "src": "^/mp3$",
+      "status": 301,
+      "headers": {
+        "Location": "/feed/mp3/",
+        "Cache-Control": "public, max-age=3600"
+      }
+    },
+    {
       "src": "^/board/.*$",
       "status": 301,
       "headers": {
@@ -37,7 +69,7 @@
       "src": "^/threads/(.*)\\.\\d+/?$",
       "status": 301,
       "headers": {
-        "Location": "/$1",
+        "Location": "/$1/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
@@ -181,7 +213,7 @@
       "src": "^/tags/(.*)$",
       "status": 301,
       "headers": {
-        "Location": "/tag/$1",
+        "Location": "/tag/$1/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
@@ -213,7 +245,7 @@
       "src": "^/tag/רכב/?$",
       "status": 301,
       "headers": {
-        "Location": "/tags/auto/",
+        "Location": "/tag/auto/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
@@ -221,7 +253,7 @@
       "src": "^/tag/%d7%a8%d7%9b%d7%91/?$",
       "status": 301,
       "headers": {
-        "Location": "/tags/auto/",
+        "Location": "/tag/auto/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
@@ -229,7 +261,7 @@
       "src": "^/tag/%D7%A8%D7%9B%D7%91/?$",
       "status": 301,
       "headers": {
-        "Location": "/tags/auto/",
+        "Location": "/tag/auto/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
@@ -461,7 +493,7 @@
       "src": "^/fifa-18-מחשב-מול-ps4-מול-ps4-pro-ראש-בראש/?$",
       "status": 301,
       "headers": {
-        "Location": "/fifa18-pc-vsps4-vs-ps4pro/",
+        "Location": "/fifa18-pc-vs-ps4-vs-ps4pro/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
@@ -469,7 +501,7 @@
       "src": "^/fifa-18-%d7%9e%d7%97%d7%a9%d7%91-%d7%9e%d7%95%d7%9c-ps4-%d7%9e%d7%95%d7%9c-ps4-pro-%d7%a8%d7%90%d7%a9-%d7%91%d7%a8%d7%90%d7%a9/?$",
       "status": 301,
       "headers": {
-        "Location": "/fifa18-pc-vsps4-vs-ps4pro/",
+        "Location": "/fifa18-pc-vs-ps4-vs-ps4pro/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
@@ -477,7 +509,7 @@
       "src": "^/fifa-18-%D7%9E%D7%97%D7%A9%D7%91-%D7%9E%D7%95%D7%9C-ps4-%D7%9E%D7%95%D7%9C-ps4-pro-%D7%A8%D7%90%D7%A9-%D7%91%D7%A8%D7%90%D7%A9/?$",
       "status": 301,
       "headers": {
-        "Location": "/fifa18-pc-vsps4-vs-ps4pro/",
+        "Location": "/fifa18-pc-vs-ps4-vs-ps4pro/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
@@ -514,7 +546,7 @@
       }
     },
     {
-      "src": "^(?:/.*)?$",
+      "src": "^/.*$",
       "has": [
         {
           "type": "query",
@@ -531,7 +563,7 @@
       "src": "^/4950-2/?$",
       "status": 301,
       "headers": {
-        "Location": "/game-in-part-one-xbox-youtube-indie/",
+        "Location": "/game-in-mako-part-one-xbox-youtube-indie/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
@@ -595,7 +627,7 @@
       "src": "^/game-league-באתי-ראיתי-לא-שיחקתי/?$",
       "status": 301,
       "headers": {
-        "Location": "/game-in-league-dec/",
+        "Location": "/game-in-league-dec-18/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
@@ -603,7 +635,7 @@
       "src": "^/game-league-%d7%91%d7%90%d7%aa%d7%99-%d7%a8%d7%90%d7%99%d7%aa%d7%99-%d7%9c%d7%90-%d7%a9%d7%99%d7%97%d7%a7%d7%aa%d7%99/?$",
       "status": 301,
       "headers": {
-        "Location": "/game-in-league-dec/",
+        "Location": "/game-in-league-dec-18/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
@@ -611,7 +643,7 @@
       "src": "^/game-league-%D7%91%D7%90%D7%AA%D7%99-%D7%A8%D7%90%D7%99%D7%AA%D7%99-%D7%9C%D7%90-%D7%A9%D7%99%D7%97%D7%A7%D7%AA%D7%99/?$",
       "status": 301,
       "headers": {
-        "Location": "/game-in-league-dec/",
+        "Location": "/game-in-league-dec-18/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
@@ -779,7 +811,7 @@
       "src": "^/indie-playground/?$",
       "status": 301,
       "headers": {
-        "Location": "/indie-playground-review/",
+        "Location": "/indie-playground-2018-hands-on/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
@@ -1011,7 +1043,7 @@
       "src": "^/סקירה-בדקה-prickle-והחשיבות-בדמואים/?$",
       "status": 301,
       "headers": {
-        "Location": "/prickle-demo-demo-exprience/",
+        "Location": "/prickle-demo-exprience/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
@@ -1019,7 +1051,7 @@
       "src": "^/%d7%a1%d7%a7%d7%99%d7%a8%d7%94-%d7%91%d7%93%d7%a7%d7%94-prickle-%d7%95%d7%94%d7%97%d7%a9%d7%99%d7%91%d7%95%d7%aa-%d7%91%d7%93%d7%9e%d7%95%d7%90%d7%99%d7%9d/?$",
       "status": 301,
       "headers": {
-        "Location": "/prickle-demo-demo-exprience/",
+        "Location": "/prickle-demo-exprience/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
@@ -1027,7 +1059,7 @@
       "src": "^/%D7%A1%D7%A7%D7%99%D7%A8%D7%94-%D7%91%D7%93%D7%A7%D7%94-prickle-%D7%95%D7%94%D7%97%D7%A9%D7%99%D7%91%D7%95%D7%AA-%D7%91%D7%93%D7%9E%D7%95%D7%90%D7%99%D7%9D/?$",
       "status": 301,
       "headers": {
-        "Location": "/prickle-demo-demo-exprience/",
+        "Location": "/prickle-demo-exprience/",
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },

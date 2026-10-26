@@ -17,7 +17,7 @@
     "id": 2,
     "kind": "regex",
     "pattern": "^/threads/(.*)\\.\\d+/?$",
-    "to": "/$1",
+    "to": "/$1/",
     "status": 301
   },
   {
@@ -73,7 +73,7 @@
     "id": 8,
     "kind": "regex",
     "pattern": "^/tags/(.*)$",
-    "to": "/tag/$1",
+    "to": "/tag/$1/",
     "status": 301
   },
   {
@@ -87,7 +87,7 @@
     "id": 9,
     "kind": "exact",
     "from": "/tag/רכב",
-    "to": "/tags/auto/",
+    "to": "/tag/auto/",
     "status": 301
   },
   {
@@ -178,7 +178,7 @@
     "id": 37,
     "kind": "exact",
     "from": "/fifa-18-מחשב-מול-ps4-מול-ps4-pro-ראש-בראש",
-    "to": "/fifa18-pc-vsps4-vs-ps4pro/",
+    "to": "/fifa18-pc-vs-ps4-vs-ps4pro/",
     "status": 301
   },
   {
@@ -206,7 +206,7 @@
     "id": 39,
     "kind": "exact",
     "from": "/4950-2",
-    "to": "/game-in-part-one-xbox-youtube-indie/",
+    "to": "/game-in-mako-part-one-xbox-youtube-indie/",
     "status": 301
   },
   {
@@ -248,7 +248,7 @@
     "id": 43,
     "kind": "exact",
     "from": "/game-league-באתי-ראיתי-לא-שיחקתי",
-    "to": "/game-in-league-dec/",
+    "to": "/game-in-league-dec-18/",
     "status": 301
   },
   {
@@ -311,7 +311,7 @@
     "id": 55,
     "kind": "exact",
     "from": "/indie-playground",
-    "to": "/indie-playground-review/",
+    "to": "/indie-playground-2018-hands-on/",
     "status": 301
   },
   {
@@ -402,7 +402,7 @@
     "id": 69,
     "kind": "exact",
     "from": "/סקירה-בדקה-prickle-והחשיבות-בדמואים",
-    "to": "/prickle-demo-demo-exprience/",
+    "to": "/prickle-demo-exprience/",
     "status": 301
   },
   {
