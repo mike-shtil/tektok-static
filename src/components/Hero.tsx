@@ -1,5 +1,5 @@
-import { A } from "@solidjs/router";
 import { css } from "../../styled-system/css";
+import { NavLink } from "./NavLink";
 
 export function Hero() {
   return (
@@ -17,7 +17,10 @@ export function Hero() {
         backgroundColor: "#000",
       })}
     >
+      <h1 class="sr-only">TekTok</h1>
       <div
+        inert
+        aria-hidden="true"
         class={css({
           position: "absolute",
           inset: "0",
@@ -27,7 +30,8 @@ export function Hero() {
       >
         <iframe
           id="hero-player"
-          title="TekTok"
+          title="סרטון רקע של TekTok"
+          tabIndex={-1}
           src="https://www.youtube.com/embed/videoseries?list=PLbBnPOihibgxDkr5HhTA9a0XePy7k07_y&rel=0&loop=1&autoplay=1&mute=1&controls=0&showinfo=0&enablejsapi=1&playsinline=1"
           allow="autoplay; encrypted-media"
           class={css({
@@ -60,17 +64,17 @@ export function Hero() {
           marginBottom: "24px",
         })}
       >
-        <A href="/">
+        <NavLink href="/" label="TekTok, דף הבית">
           <img
             src="/tektok-logo-light-lg.png"
-            alt="TekTok logo"
+            alt=""
             class={css({
               height: "140px",
               width: "auto",
               maxWidth: "100%",
             })}
           />
-        </A>
+        </NavLink>
         <div
           class={css({
             marginTop: "8px",

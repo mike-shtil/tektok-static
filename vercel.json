@@ -1074,6 +1074,22 @@
         "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable"
       }
     },
+    {
+      "src": "^/sitemap\\.xml\\.gz/?$",
+      "dest": "/sitemap.xml",
+      "headers": {
+        "Content-Type": "text/xml; charset=utf-8",
+        "Cache-Control": "public, max-age=3600"
+      }
+    },
+    {
+      "src": "^/(?:sitemap|sitemap-misc|post-sitemap|page-sitemap)\\.xml$",
+      "headers": {
+        "Content-Type": "text/xml; charset=utf-8",
+        "Cache-Control": "public, max-age=3600"
+      },
+      "continue": true
+    },
     { "handle": "filesystem" }
   ]
 }

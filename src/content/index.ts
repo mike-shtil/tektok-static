@@ -1,4 +1,5 @@
 import type { Component } from "solid-js";
+import type { Seo } from "../seo/schema";
 import { authors, type Author } from "./authors";
 
 export type { Author };
@@ -56,6 +57,24 @@ export function categoryHref(slug: string): string {
   return `/category/${wpSegment(routeSlug(slug))}/`;
 }
 
+export const POSTS_PER_PAGE = 12;
+
+export function homePageHref(page: number): string {
+  return page <= 1 ? "/" : `/page/${page}/`;
+}
+
+export function categoryPageHref(slug: string, page: number): string {
+  const base = categoryHref(slug);
+  return page <= 1 ? base : `${base}page/${page}/`;
+}
+
+/** Positive integer page param. Anything else is not a page. */
+export function parsePage(value: string | undefined): number | undefined {
+  if (!value || !/^[1-9]\d*$/.test(value)) return undefined;
+  const page = Number(value);
+  return Number.isSafeInteger(page) ? page : undefined;
+}
+
 export function postHref(slug: string): string {
   return `/${wpSegment(slug)}/`;
 }
@@ -78,6 +97,8 @@ export type Post = {
   disclosure?: string;
   /** ACF `rating`, 1–5. Empty means the scale is hidden. */
   rating?: number;
+  /** Yoast head copied from the live post. Required for the MDX file to parse. */
+  seo?: Seo;
   Content: Component;
 };
 
@@ -93,6 +114,7 @@ const modules = import.meta.glob<{
     comments?: number;
     disclosure?: string;
     rating?: number;
+    seo?: Seo;
   };
 }>("./posts/*.mdx", { eager: true });
 
@@ -128,6 +150,7 @@ export function listPosts(): Post[] {
         comments: mod.frontmatter.comments ?? 0,
         disclosure: mod.frontmatter.disclosure,
         rating: mod.frontmatter.rating,
+        seo: mod.frontmatter.seo,
         Content: mod.default,
       };
     })

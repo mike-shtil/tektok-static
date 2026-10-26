@@ -1,11 +1,11 @@
-import { A } from "@solidjs/router";
 import { css } from "../../styled-system/css";
+import { NavLink } from "./NavLink";
 
 export function LogoInternal() {
   return (
-    <A
+    <NavLink
       href="/"
-      aria-label="TekTok דף הבית"
+      label="TekTok, דף הבית"
       class={css({
         position: "fixed",
         right: "0",
@@ -21,12 +21,12 @@ export function LogoInternal() {
     >
       <img
         src="/tektok-logo-negative-flat-md.png"
-        alt="TekTok logo"
+        alt=""
         class={css({
           height: "25px",
           "@media (min-width: 800px)": { height: "35px" },
         })}
       />
-    </A>
+    </NavLink>
   );
 }

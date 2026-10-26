@@ -1,4 +1,5 @@
 import { Title } from "@solidjs/meta";
+import { SeoHead } from "../seo/SeoHead";
 import { A, useParams } from "@solidjs/router";
 import { Show } from "solid-js";
 import { Dynamic } from "solid-js/web";
@@ -40,8 +41,11 @@ export default function PostPage() {
               },
             })}
           >
-            <Title>{article().title} | TekTok</Title>
+            <Show when={article().seo} fallback={<Title>{article().title} | TekTok</Title>}>
+              {(seo) => <SeoHead seo={seo()} />}
+            </Show>
             <aside
+              aria-label="פרטים נוספים"
               class={css({
                 display: "none",
                 "@media (min-width: 1000px)": {
@@ -66,6 +70,7 @@ export default function PostPage() {
                 <PostFields post={article()} part="notice" />
               </div>
           <article
+            aria-labelledby="article-title"
             class={css({
               backgroundColor: "#fff",
               color: "#000",
@@ -88,7 +93,7 @@ export default function PostPage() {
                   <CategoryChip category={category} />
                 ))}
               </div>
-              <h1>{article().title}</h1>
+              <h1 id="article-title">{article().title}</h1>
               <div
                 class={css({
                   marginTop: "48px",
@@ -99,7 +104,9 @@ export default function PostPage() {
                   "@media (min-width: 800px)": { marginTop: "40px" },
                 })}
               >
-                <span class={css({ fontWeight: "300" })}>{formatPostDate(article().date)}</span>
+                <time datetime={article().date} class={css({ fontWeight: "300" })}>
+                  {formatPostDate(article().date)}
+                </time>
                 <span class={css({ fontWeight: "600", marginRight: "auto", fontSize: "20px" })}>
                   {article().authors.map((author) => author.name).join(", ")}
                 </span>

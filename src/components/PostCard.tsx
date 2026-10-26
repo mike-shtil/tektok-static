@@ -62,9 +62,14 @@ export function PostCard(props: { post: Post }) {
             alignItems: "baseline",
           })}
         >
-          <span class={css({ fontWeight: "300" })}>{formatPostDate(props.post.date)}</span>
+          <time datetime={props.post.date} class={css({ fontWeight: "300" })}>
+            {formatPostDate(props.post.date)}
+          </time>
           <Show when={props.post.comments > 0}>
-            <span class={css({ marginRight: "10px" })}>{props.post.comments}</span>
+            <span class={css({ marginRight: "10px" })}>
+              <span class="sr-only">תגובות: </span>
+              {props.post.comments}
+            </span>
           </Show>
           <span class={css({ fontWeight: "600", marginRight: "auto", fontSize: "17px" })}>{authors()}</span>
         </div>
@@ -101,7 +106,12 @@ export function PostCard(props: { post: Post }) {
         >
           <For each={props.post.categories}>{(category) => <CategoryChip category={category} />}</For>
         </div>
-        <A href={postHref(props.post.slug)} class={css({ display: "block", overflow: "hidden", position: "relative", minHeight: "60px" })}>
+        <A
+          href={postHref(props.post.slug)}
+          tabIndex={-1}
+          aria-hidden="true"
+          class={css({ display: "block", overflow: "hidden", position: "relative", minHeight: "60px" })}
+        >
           <div
             class={css({
               paddingTop: "56.25%",

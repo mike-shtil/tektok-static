@@ -1,8 +1,8 @@
-import { A } from "@solidjs/router";
 import type { JSX } from "solid-js";
 import { For, Show } from "solid-js";
 import { css } from "../../styled-system/css";
 import { categories, categoryHref } from "../content";
+import { NavLink } from "./NavLink";
 
 const item = css({
   padding: "10px 15px",
@@ -36,13 +36,13 @@ const categoryItem = css({
 });
 
 export function Toolbar(props: { showLogo: boolean }) {
-  const pages = [
+  const pages: { href: string; title: string; lang?: string }[] = [
     { href: "/about-us/", title: "מי אנחנו" },
-    { href: "/contact-us/", title: "Contact Us" },
+    { href: "/contact-us/", title: "Contact Us", lang: "en" },
   ];
 
   return (
-    <aside
+    <header
       style={{ "view-transition-name": "site-nav" }}
       class={css({
         display: "flex",
@@ -62,9 +62,9 @@ export function Toolbar(props: { showLogo: boolean }) {
       })}
     >
       <Show when={props.showLogo}>
-        <A
+        <NavLink
           href="/"
-          aria-label="TekTok"
+          label="TekTok, דף הבית"
           class={css({
             marginBottom: "10px",
             "@media (min-width: 800px)": { marginBottom: "0", marginLeft: "20px" },
@@ -72,12 +72,13 @@ export function Toolbar(props: { showLogo: boolean }) {
         >
           <img
             src="/tektok-logo-light-lg.png"
-            alt="TekTok logo"
+            alt=""
             class={css({ height: "45px", width: "auto", marginBottom: "-8px" })}
           />
-        </A>
+        </NavLink>
       </Show>
       <nav
+        aria-label="תפריט ראשי"
         class={css({
           display: "flex",
           flexWrap: "wrap",
@@ -89,23 +90,23 @@ export function Toolbar(props: { showLogo: boolean }) {
       >
         <For each={categories.filter((category) => category.menu)}>
           {(category) => (
-            <A
+            <NavLink
               href={categoryHref(category.slug)}
               class={categoryItem}
               style={{ "--cat": category.color } as JSX.CSSProperties}
             >
               {category.title}
-            </A>
+            </NavLink>
           )}
         </For>
         <For each={pages}>
           {(page) => (
-            <A href={page.href} class={item}>
+            <NavLink href={page.href} class={item} lang={page.lang}>
               {page.title}
-            </A>
+            </NavLink>
           )}
         </For>
       </nav>
-    </aside>
+    </header>
   );
 }

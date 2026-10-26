@@ -1,4 +1,3 @@
-import { A } from "@solidjs/router";
 import type { JSX } from "solid-js";
 import { css } from "../../styled-system/css";
 import { categoryHref, type Category } from "../content";
@@ -22,7 +21,7 @@ const plain = css({
 
 export function CategoryChip(props: { category: Category }) {
   return (
-    <A
+    <a
       href={categoryHref(props.category.slug)}
       class={props.category.chip ? chip : plain}
       style={
@@ -32,6 +31,6 @@ export function CategoryChip(props: { category: Category }) {
       }
     >
       {props.category.title}
-    </A>
+    </a>
   );
 }

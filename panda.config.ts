@@ -14,7 +14,7 @@ export default defineConfig({
       margin: "0",
       direction: "rtl",
       textAlign: "right",
-      fontFamily: "'Open Sans Hebrew', sans-serif",
+      fontFamily: "'Open Sans', sans-serif",
       backgroundImage: "linear-gradient(to bottom left, #3d8bff, #e5fff5)",
       "@media (min-width: 800px)": {
         backgroundImage: "linear-gradient(to bottom left, #3d8bff, #4dffba)",

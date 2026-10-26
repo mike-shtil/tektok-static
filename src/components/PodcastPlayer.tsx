@@ -138,20 +138,30 @@ export function PodcastPlayer(props: { episode: Episode }) {
     if (audio) audio.currentTime = next;
   };
 
+  const headingId = `player-${props.episode.file.replace(/\.mp3$/i, "").replace(/[^\w-]/g, "")}`;
+
   return (
-    <section class={card} aria-label={props.episode.title}>
+    <section class={card} aria-labelledby={headingId}>
       <div class={heading}>
         <img class={cover} src={props.episode.image} alt="" width={72} height={72} />
         <div>
           <div class={kicker}>TekTok הפודקאסט</div>
-          <div class={title}>{props.episode.title}</div>
+          <div id={headingId} class={title} role="heading" aria-level={2}>
+            {props.episode.title}
+          </div>
           <Show when={props.episode.subtitle}>
             <p class={subtitle}>{props.episode.subtitle}</p>
           </Show>
         </div>
       </div>
-      <div class={transport}>
-        <button type="button" class={play} aria-label={playing() ? "השהיה" : "ניגון"} onClick={toggle}>
+      <div class={transport} role="group" aria-label="בקרי ניגון">
+        <button
+          type="button"
+          class={play}
+          aria-label={playing() ? "השהיה" : "ניגון"}
+          aria-pressed={playing()}
+          onClick={toggle}
+        >
           <Show when={playing()} fallback={
             <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
               <path d="M5 3.5v11l10-5.5z" fill="currentColor" />
@@ -162,7 +172,7 @@ export function PodcastPlayer(props: { episode: Episode }) {
             </svg>
           </Show>
         </button>
-        <span class={time}>{clock(current())}</span>
+        <span class={time} aria-hidden="true">{clock(current())}</span>
         <input
           class={seek}
           type="range"
@@ -171,9 +181,10 @@ export function PodcastPlayer(props: { episode: Episode }) {
           step="0.1"
           value={current()}
           aria-label="מיקום בפרק"
+          aria-valuetext={`${clock(current())} מתוך ${clock(length())}`}
           onInput={(event) => seekTo(event.currentTarget.value)}
         />
-        <span class={time}>{clock(length())}</span>
+        <span class={time} aria-hidden="true">{clock(length())}</span>
         <input
           class={volume}
           type="range"
@@ -182,6 +193,7 @@ export function PodcastPlayer(props: { episode: Episode }) {
           step="0.05"
           value={level()}
           aria-label="עוצמת שמע"
+          aria-valuetext={`${Math.round(level() * 100)} אחוז`}
           onInput={(event) => {
             const next = Number(event.currentTarget.value);
             setLevel(next);
@@ -196,6 +208,7 @@ export function PodcastPlayer(props: { episode: Episode }) {
       </div>
       <audio
         ref={audio}
+        aria-hidden="true"
         preload="metadata"
         src={props.episode.audio}
         onPlay={() => setPlaying(true)}

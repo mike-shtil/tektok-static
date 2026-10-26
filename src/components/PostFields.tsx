@@ -21,6 +21,8 @@ export function Disclosure(props: { text: string }) {
       })}
     >
       <div
+        role="heading"
+        aria-level={2}
         class={css({
           display: "flex",
           alignItems: "center",
@@ -38,7 +40,7 @@ export function Disclosure(props: { text: string }) {
         })}
       >
         <span class={css({ fontWeight: "300", letterSpacing: "1.4px" })}>גילוי נאות</span>
-        <span class={css({ "@media (min-width: 800px)": { fontSize: "0.9em" } })}>Unbiased</span>
+        <span lang="en" class={css({ "@media (min-width: 800px)": { fontSize: "0.9em" } })}>Unbiased</span>
       </div>
       <p class={css({ margin: "0", lineHeight: "1.4", fontWeight: "300", fontSize: "16px" })}>{props.text}</p>
     </section>
@@ -56,12 +58,12 @@ export function Rating(props: { score: number }) {
       })}
     >
       <h3 class={css({ margin: "0 0 12px", fontSize: "1.1rem" })}>הדירוג שלנו</h3>
-      <div class={css({ display: "flex", flexDirection: "column", gap: "6px" })}>
+      <ul class={css({ display: "flex", flexDirection: "column", gap: "6px" })}>
         <For each={ratings}>
           {(item) => {
             const selected = () => item.score === props.score;
             return (
-              <div
+              <li
                 class={css({
                   padding: "8px 10px",
                   fontWeight: "600",
@@ -75,11 +77,14 @@ export function Rating(props: { score: number }) {
                 }}
               >
                 {item.label}
-              </div>
+                <Show when={selected()}>
+                  <span class="sr-only">, נבחר</span>
+                </Show>
+              </li>
             );
           }}
         </For>
-      </div>
+      </ul>
     </section>
   );
 }

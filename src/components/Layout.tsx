@@ -8,9 +8,24 @@ import { Toolbar } from "./Toolbar";
 export function Layout(props: { home?: boolean; hero?: JSX.Element; children: JSX.Element }) {
   return (
     <>
+      <a
+        href="#main-content"
+        class="skip-link"
+        onClick={(event) => {
+          const main = document.getElementById("main-content");
+          if (!main) return;
+          event.preventDefault();
+          main.focus({ preventScroll: true });
+          main.scrollIntoView();
+        }}
+      >
+        דילוג לתוכן
+      </a>
       <Toolbar showLogo={!props.home} />
       {props.hero}
       <main
+        id="main-content"
+        tabIndex={-1}
         class={css({
           minHeight: "100vh",
           padding: "60px 15px",

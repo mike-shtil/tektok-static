@@ -6,6 +6,8 @@ import { nitro } from "nitro/vite";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import { defineConfig, type Plugin } from "vite";
+import { generateSitemap } from "./scripts/sitemap.mjs";
+import { requireSeo } from "./src/mdx/require-seo";
 import { spotifyEmbed } from "./src/mdx/spotify-embed";
 
 function mdxFile(source: string, importer?: string): string | null {
@@ -33,12 +35,15 @@ function solidMdx(): Plugin {
       const sourcePath = file.slice(0, -4);
       this.addWatchFile(sourcePath);
       const source = await readFile(sourcePath, "utf8");
-      const compiled = await compile(source, {
-        jsx: true,
-        jsxImportSource: "solid-js",
-        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
-        rehypePlugins: [spotifyEmbed],
-      });
+      const compiled = await compile(
+        { path: sourcePath, value: source },
+        {
+          jsx: true,
+          jsxImportSource: "solid-js",
+          remarkPlugins: [remarkFrontmatter, requireSeo, remarkMdxFrontmatter],
+          rehypePlugins: [spotifyEmbed],
+        },
+      );
       // MDX emits <_components.p>, which Solid SSR treats as a component call.
       // Intrinsic tags have to be literal elements for the Solid compiler.
       const code = String(compiled.value).replace(/<(\/?)_components\.([A-Za-z][\w-]*)/g, "<$1$2");
@@ -47,8 +52,24 @@ function solidMdx(): Plugin {
   };
 }
 
+function tektokSitemap(): Plugin {
+  const run = () => {
+    generateSitemap();
+  };
+  return {
+    name: "tektok-sitemap",
+    config() {
+      run();
+    },
+    watchChange(id) {
+      const file = id.replaceAll("\\", "/");
+      if (file.includes("/content/posts/") && file.endsWith(".mdx")) run();
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [solidMdx(), solidStart({ middleware: path.resolve("src/middleware.ts") }), nitro()],
+  plugins: [tektokSitemap(), solidMdx(), solidStart({ middleware: path.resolve("src/middleware.ts") }), nitro()],
   nitro: {
     preset: "static",
     prerender: {

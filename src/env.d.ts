@@ -1,3 +1,5 @@
+import type { Seo } from "./seo/schema";
+
 declare module "*.xml?raw" {
   const content: string;
   export default content;
@@ -15,6 +17,7 @@ declare module "*.mdx" {
     comments?: number;
     disclosure?: string;
     rating?: number;
+    seo?: Seo;
   };
   const Content: Component;
   export default Content;

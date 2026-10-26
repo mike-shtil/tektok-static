@@ -7,6 +7,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "redirects": "node scripts/extract-legacy-redirects.mjs",
+    "sitemap": "node scripts/sitemap.mjs",
     "prepare": "panda"
   },
   "devEngines": {
@@ -29,6 +30,7 @@
     "remark-frontmatter": "^5.0.0",
     "remark-mdx-frontmatter": "^6.0.0",
     "typescript": "^7.0.2",
-    "vite": "^8.3.5"
+    "vite": "^8.3.5",
+    "yaml": "^2.9.1"
   }
 }

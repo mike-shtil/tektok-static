@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://tektok.co.il/sitemap.xml
+Sitemap: https://tektok.co.il/sitemap.html
