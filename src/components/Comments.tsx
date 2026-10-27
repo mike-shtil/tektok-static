@@ -107,7 +107,7 @@ export function Comments(props: { slug: string }) {
           "@media (min-width: 800px)": { padding: "24px 28px 12px" },
         })}
       >
-        <h2 id="comments-heading" class={css({ marginBottom: "8px" })}>
+        <h2 id="comments-heading">
           תגובות ({total()})
         </h2>
         <ol class={css({ margin: "0", padding: "0" })}>
