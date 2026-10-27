@@ -7,6 +7,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import { defineConfig, type Plugin } from "vite";
 import { generateSitemap } from "./scripts/sitemap.mjs";
+import { blankPostLinks } from "./src/mdx/blank-links";
 import { requireSeo } from "./src/mdx/require-seo";
 import { spotifyEmbed } from "./src/mdx/spotify-embed";
 
@@ -34,7 +35,7 @@ function solidMdx(): Plugin {
       if (!file.endsWith(".mdx.tsx")) return null;
       const sourcePath = file.slice(0, -4);
       this.addWatchFile(sourcePath);
-      const source = await readFile(sourcePath, "utf8");
+      const source = blankPostLinks(await readFile(sourcePath, "utf8"));
       const compiled = await compile(
         { path: sourcePath, value: source },
         {
