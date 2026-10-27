@@ -7,6 +7,7 @@ import { css } from "../../styled-system/css";
 import { CategoryChip } from "../components/CategoryChip";
 import { Layout } from "../components/Layout";
 import { PodcastPlayer } from "../components/PodcastPlayer";
+import { Comments } from "../components/Comments";
 import { PostFields } from "../components/PostFields";
 import { formatPostDate, getPost, routeSlug } from "../content";
 import { episodeForPost } from "../podcast/episodes";
@@ -143,6 +144,7 @@ export default function PostPage() {
               <Dynamic component={article().Content} />
             </div>
           </article>
+              <Comments slug={article().slug} />
               <div class={css({ "@media (min-width: 1000px)": { display: "none" } })}>
                 <PostFields post={article()} part="authors" />
               </div>

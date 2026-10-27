@@ -185,3 +185,12 @@ export function formatPostDate(iso: string): string {
   const date = new Date(iso);
   return `${date.getDate()} ב${months[date.getMonth()]} ${date.getFullYear()}`;
 }
+
+/** Calendar date from a stored `YYYY-MM-DDTHH:mm:ss` comment timestamp. */
+export function formatCommentDate(value: string): string {
+  const match = /^(\d{4})-(\d{2})-(\d{2})(?:[T ](\d{2}):(\d{2}))?/.exec(value);
+  if (!match) return value;
+  const [, year, month, day, hour, minute] = match;
+  const label = `${Number(day)} ב${months[Number(month) - 1]} ${year}`;
+  return hour ? `${label}, ${hour}:${minute}` : label;
+}

@@ -6,6 +6,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
+    "comments": "node scripts/extract-comments.mjs",
     "redirects": "node scripts/extract-legacy-redirects.mjs",
     "sitemap": "node scripts/sitemap.mjs",
     "prepare": "panda"

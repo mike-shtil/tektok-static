@@ -119,7 +119,9 @@ function skipStatement(sql, start) {
   return i;
 }
 
-export function loadSql(sql, types = new Set(["post"])) {
+export function loadSql(sql, types = new Set(["post"]), options = {}) {
+  const collectComments = Boolean(options.comments);
+  const tables = collectComments ? new Set([...wanted, "pdfr2rx_comments"]) : wanted;
   const users = [];
   const userMeta = new Map();
   const posts = [];
@@ -129,6 +131,7 @@ export function loadSql(sql, types = new Set(["post"])) {
   const terms = new Map();
   const taxonomies = [];
   const relationships = [];
+  const comments = [];
 
   const needle = "INSERT INTO `";
   let i = 0;
@@ -139,7 +142,7 @@ export function loadSql(sql, types = new Set(["post"])) {
     const nameEnd = sql.indexOf("`", nameStart);
     const table = sql.slice(nameStart, nameEnd);
     const valuesAt = sql.indexOf("VALUES", nameEnd);
-    if (!wanted.has(table)) {
+    if (!tables.has(table)) {
       i = skipStatement(sql, valuesAt + 6);
       continue;
     }
@@ -217,11 +220,22 @@ export function loadSql(sql, types = new Set(["post"])) {
           taxonomyId: Number(row[1]),
           order: Number(row[2] ?? 0),
         });
+      } else if (table === "pdfr2rx_comments" && row.length >= 15) {
+        comments.push({
+          id: Number(row[0]),
+          postId: Number(row[1]),
+          author: row[2] ?? "",
+          date: row[6] ?? "",
+          html: row[8] ?? "",
+          approved: String(row[10] ?? ""),
+          type: row[12] ?? "",
+          parent: Number(row[13] ?? 0),
+        });
       }
     });
   }
 
-  return { users, userMeta, posts, postMeta, files, terms, taxonomies, relationships, attachments };
+  return { users, userMeta, posts, postMeta, files, terms, taxonomies, relationships, attachments, comments };
 }
 
 export function decodeWp(value) {
