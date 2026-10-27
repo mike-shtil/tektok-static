@@ -107,12 +107,9 @@ export function Comments(props: { slug: string }) {
           "@media (min-width: 800px)": { padding: "24px 28px 12px" },
         })}
       >
-        <h2 id="comments-heading" class={css({ marginBottom: "4px" })}>
+        <h2 id="comments-heading" class={css({ marginBottom: "8px" })}>
           תגובות ({total()})
         </h2>
-        <p class={css({ margin: "0 0 8px", color: "#5c6570", fontSize: "14px" })}>
-          תגובות שנשמרו מהאתר. לא ניתן להוסיף תגובות חדשות.
-        </p>
         <ol class={css({ margin: "0", padding: "0" })}>
           <For each={list()}>{(comment) => <CommentItem comment={comment} depth={0} />}</For>
         </ol>
