@@ -1,4 +1,4 @@
-import { createSignal, For, Show } from "solid-js";
+import { createSignal, Show } from "solid-js";
 import { css } from "../../styled-system/css";
 import type { Episode } from "../podcast/episodes";
 
@@ -91,26 +91,22 @@ const volume = css({
   "@media (max-width: 560px)": { display: "none" },
 });
 
-const speeds = css({
-  display: "flex",
-  gap: "2px",
-  flex: "0 0 auto",
-});
-
 const speed = css({
   border: "0",
-  background: "transparent",
-  color: "rgba(255, 255, 255, 0.75)",
+  background: "#fff",
+  color: "#111",
   font: "inherit",
-  fontSize: "12px",
+  fontSize: "13px",
   fontWeight: "700",
   fontVariantNumeric: "tabular-nums",
   lineHeight: "1",
-  padding: "6px",
-  borderRadius: "6px",
+  minWidth: "3.4em",
+  height: "32px",
+  padding: "0 8px",
+  borderRadius: "999px",
   cursor: "pointer",
-  "&:hover": { color: "#fff" },
-  "&[aria-pressed=true]": { background: "#fff", color: "#111" },
+  flex: "0 0 auto",
+  "&:hover": { background: "#3d8bff", color: "#fff" },
 });
 
 const rates = [1, 1.2, 1.5, 2] as const;
@@ -150,7 +146,8 @@ export function PodcastPlayer(props: { episode: Episode }) {
   const [level, setLevel] = createSignal(1);
   const [rate, setRate] = createSignal<(typeof rates)[number]>(1);
 
-  const chooseRate = (next: (typeof rates)[number]) => {
+  const cycleRate = () => {
+    const next = rates[(rates.indexOf(rate()) + 1) % rates.length];
     setRate(next);
     if (!audio) return;
     audio.playbackRate = next;
@@ -217,21 +214,9 @@ export function PodcastPlayer(props: { episode: Episode }) {
           onInput={(event) => seekTo(event.currentTarget.value)}
         />
         <span class={time} aria-hidden="true">{clock(length())}</span>
-        <div class={speeds} role="group" aria-label="מהירות ניגון">
-          <For each={rates}>
-            {(value) => (
-              <button
-                type="button"
-                class={speed}
-                aria-pressed={rate() === value}
-                aria-label={`מהירות ×${value}`}
-                onClick={() => chooseRate(value)}
-              >
-                ×{value}
-              </button>
-            )}
-          </For>
-        </div>
+        <button type="button" class={speed} aria-label={`מהירות ניגון ×${rate()}`} onClick={cycleRate}>
+          ×{rate()}
+        </button>
         <input
           class={volume}
           type="range"
