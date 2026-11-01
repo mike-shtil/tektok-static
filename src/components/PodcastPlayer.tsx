@@ -1,4 +1,4 @@
-import { createSignal, Show } from "solid-js";
+import { createSignal, For, Show } from "solid-js";
 import { css } from "../../styled-system/css";
 import type { Episode } from "../podcast/episodes";
 
@@ -91,6 +91,30 @@ const volume = css({
   "@media (max-width: 560px)": { display: "none" },
 });
 
+const speeds = css({
+  display: "flex",
+  gap: "2px",
+  flex: "0 0 auto",
+});
+
+const speed = css({
+  border: "0",
+  background: "transparent",
+  color: "rgba(255, 255, 255, 0.75)",
+  font: "inherit",
+  fontSize: "12px",
+  fontWeight: "700",
+  fontVariantNumeric: "tabular-nums",
+  lineHeight: "1",
+  padding: "6px",
+  borderRadius: "6px",
+  cursor: "pointer",
+  "&:hover": { color: "#fff" },
+  "&[aria-pressed=true]": { background: "#fff", color: "#111" },
+});
+
+const rates = [1, 1.2, 1.5, 2] as const;
+
 const iconLink = css({
   color: "#fff",
   display: "grid",
@@ -124,6 +148,14 @@ export function PodcastPlayer(props: { episode: Episode }) {
   const [current, setCurrent] = createSignal(0);
   const [length, setLength] = createSignal(parseClock(props.episode.duration));
   const [level, setLevel] = createSignal(1);
+  const [rate, setRate] = createSignal<(typeof rates)[number]>(1);
+
+  const chooseRate = (next: (typeof rates)[number]) => {
+    setRate(next);
+    if (!audio) return;
+    audio.playbackRate = next;
+    audio.defaultPlaybackRate = next;
+  };
 
   const toggle = () => {
     const node = audio;
@@ -185,6 +217,21 @@ export function PodcastPlayer(props: { episode: Episode }) {
           onInput={(event) => seekTo(event.currentTarget.value)}
         />
         <span class={time} aria-hidden="true">{clock(length())}</span>
+        <div class={speeds} role="group" aria-label="מהירות ניגון">
+          <For each={rates}>
+            {(value) => (
+              <button
+                type="button"
+                class={speed}
+                aria-pressed={rate() === value}
+                aria-label={`מהירות ×${value}`}
+                onClick={() => chooseRate(value)}
+              >
+                ×{value}
+              </button>
+            )}
+          </For>
+        </div>
         <input
           class={volume}
           type="range"
