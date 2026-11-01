@@ -35,8 +35,12 @@ const floatingCard = css({
     zIndex: "40",
     bottom: "56px",
     insetInlineStart: "16px",
-    width: "min(420px, calc(100vw - 32px))",
+    width: "min(560px, calc(100vw - 32px))",
     margin: "0",
+    padding: "8px 10px",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: "10px",
     boxShadow: "0 16px 40px rgba(0, 0, 0, 0.45)",
   },
 });
@@ -57,8 +61,7 @@ const cover = css({
 });
 
 const floatingCover = css({
-  width: "48px",
-  height: "48px",
+  "&&": { width: "36px", height: "36px", borderRadius: "6px" },
 });
 
 const kicker = css({
@@ -80,12 +83,6 @@ const titleLink = css({
   lineHeight: "1.3",
   color: "#fff",
   "&:hover": { color: "#3d8bff" },
-});
-
-const clamped = css({
-  overflow: "hidden",
-  textOverflow: "ellipsis",
-  whiteSpace: "nowrap",
 });
 
 const subtitle = css({
@@ -117,6 +114,10 @@ const play = css({
   "&:hover": { background: "#3d8bff", color: "#fff" },
 });
 
+const playSmall = css({
+  "&&": { width: "32px", height: "32px" },
+});
+
 const time = css({
   fontSize: "12px",
   fontVariantNumeric: "tabular-nums",
@@ -129,13 +130,6 @@ const seek = css({
   minWidth: "0",
   accentColor: "#3d8bff",
   cursor: "pointer",
-});
-
-const volume = css({
-  width: "72px",
-  accentColor: "#fff",
-  cursor: "pointer",
-  "@media (max-width: 560px)": { display: "none" },
 });
 
 const speed = css({
@@ -162,6 +156,36 @@ const iconLink = css({
   placeItems: "center",
   flex: "0 0 auto",
   "&:hover": { color: "#3d8bff" },
+});
+
+const close = css({
+  width: "28px",
+  height: "28px",
+  border: "0",
+  padding: "0",
+  borderRadius: "999px",
+  background: "transparent",
+  color: "rgba(255, 255, 255, 0.75)",
+  display: "grid",
+  placeItems: "center",
+  cursor: "pointer",
+  flex: "0 0 auto",
+  "&:hover": { color: "#fff", background: "rgba(255, 255, 255, 0.12)" },
+});
+
+const dockTransport = css({
+  "&&": { flex: "1 1 200px", minWidth: "0", gap: "8px" },
+});
+
+const dockTitle = css({
+  "&&": {
+    flex: "1 1 120px",
+    minWidth: "0",
+    fontSize: "14px",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  },
 });
 
 function clock(seconds: number): string {
@@ -194,12 +218,11 @@ type Session = {
   playing: () => boolean;
   current: () => number;
   length: () => number;
-  level: () => number;
   rate: () => PlaybackRate;
   toggle: (episode: Episode, resume?: number) => void;
   seek: (seconds: number) => void;
-  setLevel: (value: number) => void;
   cycleRate: () => void;
+  close: () => void;
 };
 
 const PodcastContext = createContext<Session>();
@@ -217,7 +240,6 @@ export function PodcastProvider(props: { children: JSX.Element }) {
   const [playing, setPlaying] = createSignal(false);
   const [current, setCurrent] = createSignal(0);
   const [length, setLength] = createSignal(0);
-  const [level, setLevel] = createSignal(1);
   const [rate, setRate] = createSignal<PlaybackRate>(1);
   let loadGeneration = 0;
   let resumeReady = true;
@@ -289,7 +311,6 @@ export function PodcastProvider(props: { children: JSX.Element }) {
       node.src = next.audio;
       node.preload = "auto";
     }
-    node.volume = level();
     node.playbackRate = rate();
     node.defaultPlaybackRate = rate();
     setStarted(true);
@@ -302,7 +323,6 @@ export function PodcastProvider(props: { children: JSX.Element }) {
     playing,
     current,
     length,
-    level,
     rate,
     toggle(next, resume) {
       const node = audio;
@@ -322,10 +342,6 @@ export function PodcastProvider(props: { children: JSX.Element }) {
       if (seconds < 1) clearPosition(currentEpisode.file);
       else writePosition(currentEpisode.file, seconds, audio?.duration ?? 0);
     },
-    setLevel(next) {
-      setLevel(next);
-      if (audio) audio.volume = next;
-    },
     cycleRate() {
       const next = rates[(rates.indexOf(rate()) + 1) % rates.length];
       setRate(next);
@@ -333,6 +349,15 @@ export function PodcastProvider(props: { children: JSX.Element }) {
       if (!audio) return;
       audio.playbackRate = next;
       audio.defaultPlaybackRate = next;
+    },
+    close() {
+      const currentEpisode = episode();
+      if (audio) {
+        audio.pause();
+        if (currentEpisode) remember(currentEpisode.file);
+      }
+      setPlaying(false);
+      setStarted(false);
     },
   };
 
@@ -424,40 +449,51 @@ function PlayerCard(props: { episode: Episode; floating?: boolean; flush?: boole
       style={props.floating ? { "view-transition-name": "podcast-dock" } : undefined}
       aria-labelledby={id()}
     >
-      <div class={heading}>
-        <img
-          class={`${cover} ${props.floating ? floatingCover : ""}`}
-          src={props.episode.image}
-          alt=""
-          width={props.floating ? 48 : 72}
-          height={props.floating ? 48 : 72}
-        />
-        <div class={css({ minWidth: "0" })}>
-          <div class={kicker}>
-            TekTok הפודקאסט
-            <Show when={props.showDate && props.episode.dateLabel}> · {props.episode.dateLabel}</Show>
-          </div>
-          <Show
-            when={!onPage()}
-            fallback={
-              <div id={id()} class={`${title} ${props.floating ? clamped : ""}`} role="heading" aria-level={2}>
+      <Show when={!props.floating}>
+        <div class={heading}>
+          <img class={cover} src={props.episode.image} alt="" width={72} height={72} />
+          <div class={css({ minWidth: "0" })}>
+            <div class={kicker}>
+              TekTok הפודקאסט
+              <Show when={props.showDate && props.episode.dateLabel}> · {props.episode.dateLabel}</Show>
+            </div>
+            <Show
+              when={!onPage()}
+              fallback={
+                <div id={id()} class={title} role="heading" aria-level={2}>
+                  {props.episode.title}
+                </div>
+              }
+            >
+              <A id={id()} href={props.episode.href} class={titleLink}>
                 {props.episode.title}
-              </div>
-            }
-          >
-            <A id={id()} href={props.episode.href} class={`${titleLink} ${props.floating ? clamped : ""}`}>
-              {props.episode.title}
-            </A>
-          </Show>
-          <Show when={!props.floating && props.episode.subtitle}>
-            <p class={subtitle}>{props.episode.subtitle}</p>
-          </Show>
+              </A>
+            </Show>
+            <Show when={props.episode.subtitle}>
+              <p class={subtitle}>{props.episode.subtitle}</p>
+            </Show>
+          </div>
         </div>
-      </div>
-      <div class={transport} role="group" aria-label="בקרי ניגון">
+      </Show>
+      <Show when={props.floating}>
+        <img class={`${cover} ${floatingCover}`} src={props.episode.image} alt="" width={36} height={36} />
+        <Show
+          when={!onPage()}
+          fallback={
+            <div id={id()} class={`${title} ${dockTitle}`} role="heading" aria-level={2}>
+              {props.episode.title}
+            </div>
+          }
+        >
+          <A id={id()} href={props.episode.href} class={`${titleLink} ${dockTitle}`}>
+            {props.episode.title}
+          </A>
+        </Show>
+      </Show>
+      <div class={`${transport} ${props.floating ? dockTransport : ""}`} role="group" aria-label="בקרי ניגון">
         <button
           type="button"
-          class={play}
+          class={`${play} ${props.floating ? playSmall : ""}`}
           aria-label={playing() ? "השהיה" : "ניגון"}
           aria-pressed={playing()}
           onClick={toggle}
@@ -495,23 +531,19 @@ function PlayerCard(props: { episode: Episode; floating?: boolean; flush?: boole
         <button type="button" class={speed} aria-label={`מהירות ניגון ×${session.rate()}`} onClick={() => session.cycleRate()}>
           ×{session.rate()}
         </button>
-        <input
-          class={volume}
-          type="range"
-          min="0"
-          max="1"
-          step="0.05"
-          value={session.level()}
-          aria-label="עוצמת שמע"
-          aria-valuetext={`${Math.round(session.level() * 100)} אחוז`}
-          onInput={(event) => session.setLevel(Number(event.currentTarget.value))}
-        />
         <a class={iconLink} href={props.episode.audio} download={props.episode.file} aria-label="הורדת הפרק">
           <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
             <path d="M9 2v8.2l2.6-2.6 1.4 1.4L9 13.9 5 9.9l1.4-1.4L9 10.2V2h0zM3 15h12v1.5H3z" fill="currentColor" />
           </svg>
         </a>
       </div>
+      <Show when={props.floating}>
+        <button type="button" class={close} aria-label="סגירת הנגן" onClick={() => session.close()}>
+          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+            <path d="M2.1 2.1l9.8 9.8M11.9 2.1l-9.8 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </button>
+      </Show>
     </section>
   );
 }
