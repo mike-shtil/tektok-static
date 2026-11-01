@@ -14,7 +14,10 @@
 ::view-transition-new(site-nav),
 ::view-transition-group(site-footer),
 ::view-transition-old(site-footer),
-::view-transition-new(site-footer) {
+::view-transition-new(site-footer),
+::view-transition-group(podcast-dock),
+::view-transition-old(podcast-dock),
+::view-transition-new(podcast-dock) {
   animation: none;
 }
 
